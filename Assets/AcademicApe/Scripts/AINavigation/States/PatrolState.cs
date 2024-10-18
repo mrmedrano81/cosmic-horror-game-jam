@@ -18,5 +18,6 @@ public class PatrolState : AIStateMachine
             Debug.Log("Reached Waypoint, going to next waypoint");
             ai.MovetoNextWaypoint();
         }
+        //ai.swarmBehaviour.Update();
     }
 }
