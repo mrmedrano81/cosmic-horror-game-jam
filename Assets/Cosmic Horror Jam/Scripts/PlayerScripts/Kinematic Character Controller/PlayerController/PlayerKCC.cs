@@ -40,6 +40,8 @@ namespace KinematicCharacterController
         public Quaternion CameraRotation;
         public bool SpaceBar;
         public bool LeftShiftHold;
+
+        public bool Interact;
     }
 
     public struct AICharacterInputs
@@ -63,6 +65,7 @@ namespace KinematicCharacterController
         [Header("[DO NOT REMOVE]")]
         public KinematicCharacterMotor Motor;
         public Animator _animator;
+        public FieldOfView _fov;
 
         [Header("State Machine")]
         PlayerBaseState _currentState;
@@ -107,61 +110,16 @@ namespace KinematicCharacterController
         public float _jumpPreGroundingGraceTime = 0f;
         public float _jumpPostGroundingGraceTime = 0f;
 
-        [Header("Wall Movement (Checking)")]
-        public LayerMask _wallLayers;
-        public Vector3 _currentWallHitNormal;
-        public float _wallFrontCheckHeightOffset;
-        public float _wallFrontCheckAngle;
-        public float _wallFrontCheckLength;
-        public float _wallSideCheckLength;
-        public float _groundCheckLengthWhileClimbing;
-        public float _capsuleCheckDistanceOffset;
-
-        public bool _wallMovement = false;
-        private bool _hitLeft;
-        private bool _hitRight;
-        private int _prevLeftWallColliderID;
-        private int _prevRightWallColliderID;
-        private Vector3 _wallSnapPosition;
-
-        [Header("Wall Movement (Settings)")]
-        public float _wallJumpStrength;
-        public float _upwardWallJumpAngle;
-        public float _wallDropStrength;
-        public float _climbingCapsuleHeight;
-
-        // Wall Climbing Gizmos
-        Vector3 leftWallRaycastTip;
-        Vector3 rightWallRaycastTip;
-        Vector3 frontWallRaycastTip;
-
         [Header("Parkour Variables")]
+        public LayerMask _wallLayers;
         public float _obstacleCheckLength;
         public float _obstacleLowCheckHeight;
         public float _obstacleMidCheckHeight;
         public float _obstacleHighCheckHeight;
         public float _closeObstacleCheckLength;
 
-        public float _wallClimbSpeed;
-        public float _wallCheckLength;
-        public float _wallRunSpeed;
-        public float _wallRunTurnRate;
-        public float _wallCheckSidesOffset;
-        public float _wallCheckHeightOffset;
-
         public QuadraticCurve _curve;
         public float _mantleSpeed;
-
-        [Header("[DEBUG] Climbing")]
-        public Vector3 _wallTopCheckOrigin;
-        public Vector3 _wallBottomCheckOrigin;
-        public Vector3 _wallLeftCheckOrigin;
-        public Vector3 _wallRightCheckOrigin;
-
-        public Vector3 _wallTopNormal;
-        public Vector3 _wallBottomNormal;
-        public Vector3 _wallRightNormal;
-        public Vector3 _wallLeftNormal;
 
         [Header("[DEBUG] Mantling Debug")]
         public Vector3 _lowObstacleRaycastOrigin;
@@ -192,6 +150,7 @@ namespace KinematicCharacterController
 
         public float _moveInputForward;
         public float _moveInputRight;
+        public bool _interact;
 
         // State Management
         public EPlayerLocomotion newPlayerAction;
@@ -211,9 +170,6 @@ namespace KinematicCharacterController
 
         private void Awake()
         {
-            // Temp Fixes
-            _wallMovement = false;
-
             // State Machine
             _states = new PlayerStateFactory(this);
             _currentState = _states.Grounded();
@@ -223,7 +179,9 @@ namespace KinematicCharacterController
 
             _animator = GetComponent<Animator>();
 
-            _currentWallHitNormal = Vector3.zero;
+            _fov = GetComponent<FieldOfView>();
+
+            // ----------------------------------- //
 
             // Handle initial state
             TransitionToState(ECharacterState.Default);
@@ -297,7 +255,9 @@ namespace KinematicCharacterController
         /// This is called every frame by the player in order to tell the character what its inputs are
         /// </summary>
         public void SetInputs(ref PlayerCharacterInputs inputs)
-        {   
+        {
+            _interact = inputs.Interact;
+
             _moveInputForward = inputs.MoveAxisForward;
             _moveInputRight = inputs.MoveAxisRight;
 
@@ -503,11 +463,6 @@ namespace KinematicCharacterController
             _highObstacleRaycastOrigin = Motor.TransientPosition + Motor.CharacterUp * _obstacleHighCheckHeight;
             _midObstacleRaycastOrigin = Motor.TransientPosition + Motor.CharacterUp * _obstacleMidCheckHeight;
             _lowObstacleRaycastOrigin = Motor.TransientPosition + Motor.CharacterUp * _obstacleLowCheckHeight;
-
-            _wallTopCheckOrigin = Motor.TransientPosition + Motor.CharacterUp * _wallCheckSidesOffset + Motor.CharacterUp * _wallCheckHeightOffset;
-            _wallBottomCheckOrigin = Motor.TransientPosition - Motor.CharacterUp * _wallCheckSidesOffset + Motor.CharacterUp * _wallCheckHeightOffset;
-            _wallLeftCheckOrigin = Motor.TransientPosition - Motor.CharacterRight * _wallCheckSidesOffset + Motor.CharacterUp * _wallCheckHeightOffset;
-            _wallRightCheckOrigin = Motor.TransientPosition + Motor.CharacterRight * _wallCheckSidesOffset + Motor.CharacterUp * _wallCheckHeightOffset;
         }
 
         public bool LowObstacleInFront()
@@ -646,26 +601,6 @@ namespace KinematicCharacterController
 
             Gizmos.color = Color.magenta;
             Gizmos.DrawLine(_lowObstacleRaycastOrigin, lowCheckTip);
-
-            Vector3 _wallTopCheckTip = _wallTopCheckOrigin + Motor.CharacterForward*_wallCheckLength + Motor.CharacterUp * _wallCheckHeightOffset;
-            Vector3 _wallBottomCheckTip= _wallBottomCheckOrigin + Motor.CharacterForward * _wallCheckLength + Motor.CharacterUp * _wallCheckHeightOffset;
-            Vector3 _wallLeftCheckTip= _wallLeftCheckOrigin + Motor.CharacterForward * _wallCheckLength + Motor.CharacterUp * _wallCheckHeightOffset;
-            Vector3 _wallRightCheckTip= _wallRightCheckOrigin + Motor.CharacterForward * _wallCheckLength + Motor.CharacterUp * _wallCheckHeightOffset;
-
-            Gizmos.color = Color.cyan;
-            Gizmos.DrawLine(_wallTopCheckOrigin, _wallTopCheckTip);
-
-            Gizmos.color = Color.cyan;
-            Gizmos.DrawLine(_wallBottomCheckOrigin, _wallBottomCheckTip);
-
-            Gizmos.color = Color.cyan;
-            Gizmos.DrawLine(_wallLeftCheckOrigin, _wallLeftCheckTip);
-
-            Gizmos.color = Color.cyan;
-            Gizmos.DrawLine(_wallRightCheckOrigin, _wallRightCheckTip);
-
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(_wallSnapPosition, 0.1f);
 
         }
     }

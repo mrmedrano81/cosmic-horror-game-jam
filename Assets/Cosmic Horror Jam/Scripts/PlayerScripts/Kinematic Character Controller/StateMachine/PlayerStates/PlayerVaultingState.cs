@@ -55,7 +55,7 @@ public class PlayerVaultingState : PlayerBaseState
         if (_ctx.LowObstacleInFront())
         {
             // lowVault
-            Debug.Log("[OBSTACLE SYSTEM] Low Vault");
+            //Debug.Log("[OBSTACLE SYSTEM] Low Vault");
 
             Vector3 lowObstacleHitPoint = Vector3.zero;
 

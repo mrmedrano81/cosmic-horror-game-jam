@@ -21,7 +21,7 @@ public class PlayerAirborneState : PlayerBaseState
 
     public override void EnterState()
     {
-        Debug.Log("Airborne");
+        //Debug.Log("Airborne");
 
         _ctx.CurrentCharacterState = ECharacterState.Default;
 

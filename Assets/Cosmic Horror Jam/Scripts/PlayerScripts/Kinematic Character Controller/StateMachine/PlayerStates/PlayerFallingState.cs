@@ -18,7 +18,7 @@ public class PlayerFallingState : PlayerBaseState
 
     public override void EnterState()
     {
-        Debug.Log("Enter Falling State");
+        //Debug.Log("Enter Falling State");
         _playFallingAnimation = true;
     }
 

@@ -17,13 +17,8 @@ namespace KinematicCharacterController
 
         InputAction _moveAction;
         InputAction _jumpAction;
-        InputAction _basicAttack;
-        InputAction _specialAttack;
         InputAction _run;
-        InputAction _movementAbility;
-        InputAction _weaponSwitch1;
-        InputAction _weaponSwitch2;
-        InputAction _weaponSwitch3;
+        InputAction _interact;
 
         private const string MouseXInput = "Mouse X";
         private const string MouseYInput = "Mouse Y";
@@ -50,6 +45,7 @@ namespace KinematicCharacterController
             _moveAction = playerInput.actions.FindAction("Move");
             _jumpAction = playerInput.actions.FindAction("Jump");
             _run = playerInput.actions.FindAction("Run");
+            _interact = playerInput.actions.FindAction("Interact");
 
             // --------------------------------------
 
@@ -138,6 +134,8 @@ namespace KinematicCharacterController
             characterInputs.CameraRotation = CharacterCamera.Transform.rotation;
             characterInputs.SpaceBar = _jumpAction.ReadValue<float>() == 1;
             characterInputs.LeftShiftHold = _run.ReadValue<float>() == 1;
+
+            characterInputs.Interact = _interact.ReadValue<float>() == 1;
 
             // Apply inputs to character
             Character.SetInputs(ref characterInputs);

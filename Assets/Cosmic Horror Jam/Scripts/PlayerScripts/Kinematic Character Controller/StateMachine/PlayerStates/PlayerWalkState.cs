@@ -15,7 +15,7 @@ public class PlayerWalkState : PlayerBaseState
 
     public override void EnterState()
     {
-        Debug.Log("Enter Walk State");
+        //Debug.Log("Enter Walk State");
 
         _ctx._animator.CrossFadeInFixedTime(_ctx.JOGGING, 0.1f);
     }
