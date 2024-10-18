@@ -16,7 +16,7 @@ public class PlayerRunState : PlayerBaseState
     public override void EnterState()
     {
         _ctx._animator.CrossFadeInFixedTime(_ctx.RUNNING, 0.05f);   
-        Debug.Log("Enter Run State");
+        //Debug.Log("Enter Run State");
         //_ctx.Motor.SetCapsuleDimensions(_ctx._runningCapsuleRadius, _ctx._runningCapsuleHeight, 0);
     }
 

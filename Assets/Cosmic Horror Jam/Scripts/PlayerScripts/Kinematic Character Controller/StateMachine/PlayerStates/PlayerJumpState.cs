@@ -21,7 +21,7 @@ public class PlayerJumpState : PlayerBaseState
 
     public override void EnterState()
     {
-        Debug.Log("Enter JUMP STATE");
+        //Debug.Log("Enter JUMP STATE");
 
         _ctx._animator.CrossFadeInFixedTime(_ctx.JUMPING, 0.1f);
 

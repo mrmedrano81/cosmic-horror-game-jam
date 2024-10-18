@@ -22,7 +22,7 @@ public class PlayerIdleState : PlayerBaseState
 
         _ctx._animator.CrossFadeInFixedTime(_ctx.STANDING_IDLE, 0.1f);
 
-        Debug.Log("Enter Idle State");
+        //Debug.Log("Enter Idle State");
     }
 
     public override void ExitState()
@@ -48,7 +48,7 @@ public class PlayerIdleState : PlayerBaseState
 
     public override void CheckSwitchState()
     {
-        if (!_ctx.Motor.GroundingStatus.FoundAnyGround)
+        if (!_ctx.IsGrounded)
         {
             SwitchState(_factory.Airborne());
         }

@@ -14,7 +14,7 @@ public class PlayerGroundedState : PlayerBaseState
 
     public override void EnterState()
     {
-        Debug.Log("Grounded, " + _ctx._finalFallVelocityY + ", " + _ctx._isMaintainingMomentum);
+        //Debug.Log("Grounded, " + _ctx._finalFallVelocityY + ", " + _ctx._isMaintainingMomentum);
 
         if (_ctx._isMaintainingMomentum)
         {
