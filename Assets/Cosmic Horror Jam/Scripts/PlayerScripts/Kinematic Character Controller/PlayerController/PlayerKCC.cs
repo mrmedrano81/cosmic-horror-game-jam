@@ -256,8 +256,6 @@ namespace KinematicCharacterController
         /// </summary>
         public void SetInputs(ref PlayerCharacterInputs inputs)
         {
-            _interact = inputs.Interact;
-
             _moveInputForward = inputs.MoveAxisForward;
             _moveInputRight = inputs.MoveAxisRight;
 

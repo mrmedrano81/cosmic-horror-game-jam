@@ -4,42 +4,32 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Interactable : MonoBehaviour
+public class FloatingText : MonoBehaviour
 {
+    [SerializeField] public GameObject _interactionText;
     public bool _textFacePlayerOnlyOnTrigger;
-    public bool _singleInteraction;
     private bool _textAppeared;
-
-    [HideInInspector] public bool _interacted;
-
-    [SerializeField] private GameObject _interactionText;
 
     // Start is called before the first frame update
     void Start()
     {
         _textAppeared = false;
-        _interacted = false;
         _interactionText.SetActive(false);
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (_interacted && _singleInteraction)
-        {
-            return;
-        }
-
         if (other.gameObject.CompareTag("Player"))
         {
             _interactionText.SetActive(true);
 
-            PlayerKCC playerController = other.gameObject.GetComponent<PlayerKCC>();
+            Vector3 playerPos = other.gameObject.transform.position;
 
             if (_textFacePlayerOnlyOnTrigger)
             {
                 if (!_textAppeared)
                 {
-                    Vector3 directionToPlayer = Vector3.ProjectOnPlane(-(playerController.gameObject.transform.position - _interactionText.transform.position), Vector3.up);
+                    Vector3 directionToPlayer = Vector3.ProjectOnPlane(-(playerPos - _interactionText.transform.position), Vector3.up);
 
                     _interactionText.transform.rotation = Quaternion.LookRotation(directionToPlayer, Vector3.up);
 
@@ -48,15 +38,9 @@ public class Interactable : MonoBehaviour
             }
             else 
             {
-                Vector3 directionToPlayer = Vector3.ProjectOnPlane(-(playerController.gameObject.transform.position - _interactionText.transform.position), Vector3.up);
+                Vector3 directionToPlayer = Vector3.ProjectOnPlane(-(playerPos - _interactionText.transform.position), Vector3.up);
 
                 _interactionText.transform.rotation = Quaternion.LookRotation(directionToPlayer, Vector3.up);
-            }
-
-            if (playerController._interact)
-            {
-                _interactionText.SetActive(false);
-                _interacted = true;
             }
         }
     }
