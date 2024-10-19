@@ -5,9 +5,8 @@ using UnityEngine;
 
 public class BrazierScript : MonoBehaviour
 {
-    public GameObject _unlitKindling;
-    public GameObject _litKindling;
-    public GameObject _floatingText;
+    public GameObject _brazierFire;
+    public FloatingText _floatingText;
 
     public Interact _interactionScript;
 
@@ -16,8 +15,7 @@ public class BrazierScript : MonoBehaviour
 
     private void Awake()
     {
-        _unlitKindling.SetActive(true);
-        _litKindling.SetActive(false);
+        _brazierFire.SetActive(false);
 
         _lit = false;
         _facedPlayer = false;
@@ -61,9 +59,10 @@ public class BrazierScript : MonoBehaviour
 
     public void LightBrazier()
     {
-        _litKindling.SetActive(true);
-        _unlitKindling.SetActive(false);
-        _floatingText.SetActive(false);
+        _brazierFire.SetActive(true);
+        _floatingText.enabled = false;
+        _floatingText._interactionText.SetActive(false);
+        
 
         gameObject.SetActive(false);
     }

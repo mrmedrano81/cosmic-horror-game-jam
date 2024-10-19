@@ -15651,6 +15651,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Character: {fileID: 96723923}
+  PlayerInteraction: {fileID: 0}
   CharacterCamera: {fileID: 963194229}
 --- !u!114 &1045422167
 MonoBehaviour:
@@ -21265,7 +21266,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4393177945262350443, guid: 70f53c1a4b7b287469e0d0a3def747cf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 393140688}
-    - targetCorrespondingSourceObject: {fileID: 1050015548535413777, guid: 70f53c1a4b7b287469e0d0a3def747cf, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 550862011665381163, guid: 70f53c1a4b7b287469e0d0a3def747cf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 70f53c1a4b7b287469e0d0a3def747cf, type: 3}
@@ -25388,7 +25389,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4393177945262350443, guid: 70f53c1a4b7b287469e0d0a3def747cf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2033575780}
-    - targetCorrespondingSourceObject: {fileID: 1050015548535413777, guid: 70f53c1a4b7b287469e0d0a3def747cf, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 550862011665381163, guid: 70f53c1a4b7b287469e0d0a3def747cf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 70f53c1a4b7b287469e0d0a3def747cf, type: 3}
@@ -27493,7 +27494,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4393177945262350443, guid: 70f53c1a4b7b287469e0d0a3def747cf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1616952711}
-    - targetCorrespondingSourceObject: {fileID: 1050015548535413777, guid: 70f53c1a4b7b287469e0d0a3def747cf, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 550862011665381163, guid: 70f53c1a4b7b287469e0d0a3def747cf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 70f53c1a4b7b287469e0d0a3def747cf, type: 3}
@@ -30026,7 +30027,7 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1050015548535413777, guid: 70f53c1a4b7b287469e0d0a3def747cf, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 550862011665381163, guid: 70f53c1a4b7b287469e0d0a3def747cf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 70f53c1a4b7b287469e0d0a3def747cf, type: 3}
