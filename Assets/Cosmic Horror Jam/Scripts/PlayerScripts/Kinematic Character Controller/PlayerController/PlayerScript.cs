@@ -10,6 +10,7 @@ namespace KinematicCharacterController
     {
         [Header("References")]
         public PlayerKCC Character;
+        public PlayerInteraction PlayerInteraction;
         public CameraManager CharacterCamera;
 
         [Header("Input Actions")]
@@ -135,7 +136,7 @@ namespace KinematicCharacterController
             characterInputs.SpaceBar = _jumpAction.ReadValue<float>() == 1;
             characterInputs.LeftShiftHold = _run.ReadValue<float>() == 1;
 
-            characterInputs.Interact = _interact.ReadValue<float>() == 1;
+            PlayerInteraction._interactInput = _interact.ReadValue<float>() == 1;
 
             // Apply inputs to character
             Character.SetInputs(ref characterInputs);

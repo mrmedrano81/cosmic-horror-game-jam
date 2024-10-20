@@ -231,7 +231,7 @@ namespace KinematicCharacterController
                         break;
                     }
             }
-            Debug.Log("Current State: " + CurrentCharacterState);
+            //Debug.Log("Current State: " + CurrentCharacterState);
         }
 
         /// <summary>
@@ -256,8 +256,6 @@ namespace KinematicCharacterController
         /// </summary>
         public void SetInputs(ref PlayerCharacterInputs inputs)
         {
-            _interact = inputs.Interact;
-
             _moveInputForward = inputs.MoveAxisForward;
             _moveInputRight = inputs.MoveAxisRight;
 
