@@ -8,6 +8,7 @@ public class PlayerInteraction : MonoBehaviour
     [HideInInspector] public bool _interactInput;
     public PlayerInventory inventory;
 
+
     private void OnTriggerStay(Collider other)
     {
         if (_interactInput)
@@ -23,6 +24,7 @@ public class PlayerInteraction : MonoBehaviour
                 Debug.Log("No interaction script for " + other.gameObject.name);
             }
         }
+
     }
 
     public void AddKeyItemToInventory(KeyItem keyItem)

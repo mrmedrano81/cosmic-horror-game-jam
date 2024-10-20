@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 13204730997248249}
   - component: {fileID: 6922823798930667233}
   - component: {fileID: 8571876792352395129}
-  - component: {fileID: 1444664807966167139}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 30cc120573cbad34cb507de1353ff724, type: 2}
+  - {fileID: 2100000, guid: 5a1ae5af190560d4fad809a262d81f17, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,29 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &1444664807966167139
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 980996630954905557}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 4.14
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5122878607436771054
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,9 +93,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8078111342142174943}
   - component: {fileID: 5447198463926501799}
-  - component: {fileID: 6840300102186607487}
   - component: {fileID: 1893462726248512775}
-  m_Layer: 0
+  - component: {fileID: 6617396860920874842}
+  - component: {fileID: 3196346164399015987}
+  m_Layer: 9
   m_Name: InteractionTriggerZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,8 +146,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!135 &6840300102186607487
-SphereCollider:
+--- !u!114 &1893462726248512775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5122878607436771054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4caa9fbaa43564648811a3cb0ea2f78f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactionText: {fileID: 3117556688301654367}
+  _textFacePlayerOnlyOnTrigger: 1
+--- !u!136 &6617396860920874842
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -187,10 +178,12 @@ SphereCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 1.14
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1893462726248512775
+--- !u!114 &3196346164399015987
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -199,13 +192,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5122878607436771054}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4caa9fbaa43564648811a3cb0ea2f78f, type: 3}
+  m_Script: {fileID: 11500000, guid: 951e2720f370ee747af7ae4b045f7366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textFacePlayerOnlyOnTrigger: 1
-  _singleInteraction: 1
-  _interacted: 0
-  _interactionText: {fileID: 3117556688301654367}
 --- !u!1 &9146722591308224187
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,7 +205,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7790071030981691531}
   - component: {fileID: 4839220534129940991}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: KeyItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,6 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4d913531ed08c7479a6a327e37dbdcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keyPlacement: 0
 --- !u!1001 &8005501371718380451
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -260,9 +250,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8078111342142174943}
     m_Modifications:
+    - target: {fileID: 1306087243646692424, guid: 645653546ab312d4e86f91bf4b85bbb9, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4925399086157277948, guid: 645653546ab312d4e86f91bf4b85bbb9, type: 3}
       propertyPath: m_Name
       value: Interaction
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925399086157277948, guid: 645653546ab312d4e86f91bf4b85bbb9, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4925399086157277948, guid: 645653546ab312d4e86f91bf4b85bbb9, type: 3}
       propertyPath: m_IsActive

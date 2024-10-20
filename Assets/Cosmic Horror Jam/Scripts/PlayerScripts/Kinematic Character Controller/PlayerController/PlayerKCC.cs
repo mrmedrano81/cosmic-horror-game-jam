@@ -231,7 +231,7 @@ namespace KinematicCharacterController
                         break;
                     }
             }
-            Debug.Log("Current State: " + CurrentCharacterState);
+            //Debug.Log("Current State: " + CurrentCharacterState);
         }
 
         /// <summary>

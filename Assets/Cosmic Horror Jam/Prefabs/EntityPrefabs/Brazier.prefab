@@ -84,12 +84,12 @@ MonoBehaviour:
   innerLight: {fileID: 5051161666791273558}
   secondLayerLight: {fileID: 8702090599283772416}
   thirdLayerLight: {fileID: 7554292318555455211}
-  innerMinIntensity: 110
-  innerMaxIntensity: 120
-  secondMinIntensity: 50
-  secondMaxIntensity: 70
-  thirdMinIntensity: 20
-  thirdMaxIntensity: 35
+  innerMinIntensity: 15
+  innerMaxIntensity: 20
+  secondMinIntensity: 10
+  secondMaxIntensity: 20
+  thirdMinIntensity: 5
+  thirdMaxIntensity: 10
   innerMinRange: 6
   innerMaxRange: 7
   secondMinRange: 10
@@ -142,7 +142,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.5431695, b: 0.4584905, a: 1}
-  m_Intensity: 35
+  m_Intensity: 3.1
   m_Range: 40
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -260,7 +260,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.94716984, g: 0.6404035, b: 0.46286222, a: 1}
-  m_Intensity: 70
+  m_Intensity: 7.6
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -505,8 +505,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.8312462, b: 0.6245283, a: 1}
-  m_Intensity: 120
-  m_Range: 6
+  m_Intensity: 13.6
+  m_Range: 6.66
   m_SpotAngle: 61.195053
   m_InnerSpotAngle: 38.142334
   m_CookieSize: 10
