@@ -6,16 +6,18 @@ public class ChaseState : AIStateMachine
 
     //Declaring variables
     private Transform player;
-   
 
-    public ChaseState(Transform player)
+    public void SetTarget(Transform targetplayer)
     {
-        this.player = player;
+        player = targetplayer;
     }
 
     public override void EnterState(AiManager ai) 
     {
         Debug.Log("Entered ChaseState");
+        ai.timeinsight = 0f;
+        //ai.Agent.areaMask = ai.GetAreaMaskforChase();
+        ai.Agent.areaMask = ai.chaseAreaMask;
         ai.Agent.speed = ai.chaseSpeed;
     }
 
@@ -23,21 +25,46 @@ public class ChaseState : AIStateMachine
     public override void UpdateState(AiManager ai)
     {
         //Player still in AI Detection
-        Transform detectedPlayer;
-
-        if (ai.sightDetection.CanSeePlayer(out detectedPlayer))
+        if (player != null)
         {
+            ai.timeinsight += Time.deltaTime;
+            float distancetoPlayer = Vector3.Distance(ai.transform.position, player.transform.position);
             Debug.Log("AI sees Player");
-            ai.Agent.SetDestination(detectedPlayer.position);
-            //ai.swarmBehaviour.Update();
+
+            RotateTowards(ai, player.position);
+
+            if (distancetoPlayer > ai.minDistancetoPlayer)
+            {
+                ai.Agent.SetDestination(player.position);
+                Debug.Log("Approaching Player");
+            }
+
+            else
+            {
+                ai.Agent.ResetPath();
+                Debug.Log("Maintaining Distance From Player");
+            }
+
+            if(ai.timeinsight >= ai.attacktrigger)
+            {
+                Debug.Log("Contact Time condition fulfilled, going to attack state");
+                ai.AttackTarget(player);
+            }
             return;
         }
-
-        else if (!ai.Agent.pathPending && ai.Agent.remainingDistance <= ai.waypointTolerance)
+     
+        if (!ai.Agent.pathPending && ai.Agent.remainingDistance <= ai.waypointTolerance)
         {
             Debug.Log("Player not found near waypoint, going to Search");
             Vector3 lastknowposition = ai.Agent.destination;
             ai.SwitchState(new SearchState(lastknowposition));
         }
+    }
+
+    private void RotateTowards(AiManager ai, Vector3 targetpos)
+    {
+        Vector3 direction = (targetpos - ai.transform.position).normalized;
+        Quaternion targetrotation = Quaternion.LookRotation(direction);
+        ai.transform.rotation = Quaternion.Slerp(ai.transform.rotation, targetrotation, ai.airotationspeed *Time.deltaTime);
     }
 }

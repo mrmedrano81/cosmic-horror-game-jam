@@ -33,7 +33,7 @@ public class SearchState : AIStateMachine
         Transform detecedPlayer;
         if (ai.sightDetection.CanSeePlayer(out detecedPlayer))
         {
-            ai.SwitchState(new ChaseState(detecedPlayer));
+            ai.SwitchState(ai.chaseState);
             return;
         }
 
@@ -50,8 +50,8 @@ public class SearchState : AIStateMachine
             }
             else if(searchTimer > searchDuration)
             {
-                ai.SwitchState(new PatrolState());
                 Debug.Log("No players found druing search, returning to Patrol");
+                ai.SwitchState(ai.patrolState);
             }
         }
     }
