@@ -9,8 +9,8 @@ public class FieldOfView : MonoBehaviour
     [Range(0f, 360f)]
     public float viewAngle;
 
-    public LayerMask targetMask;
-    public LayerMask obstacleMask;
+    [SerializeField] private LayerMask targetMask;
+    [SerializeField] private LayerMask obstacleMask;
 
     public List<Transform> visibleTargets = new List<Transform>();
 

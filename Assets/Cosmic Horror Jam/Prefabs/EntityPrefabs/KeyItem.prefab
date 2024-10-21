@@ -160,6 +160,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interactionText: {fileID: 3117556688301654367}
   _textFacePlayerOnlyOnTrigger: 1
+  _usesRaycastInteraction: 0
+  _playerFacingObject: 0
 --- !u!136 &6617396860920874842
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -222,8 +224,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.64, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 7.54, y: 7.54, z: 7.54}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 13204730997248249}
   - {fileID: 8078111342142174943}
@@ -241,7 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4d913531ed08c7479a6a327e37dbdcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyPlacement: 0
+  keyEnum: 0
 --- !u!1001 &8005501371718380451
 PrefabInstance:
   m_ObjectHideFlags: 0

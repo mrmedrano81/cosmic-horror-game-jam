@@ -8,10 +8,13 @@ public class GameStateManager : MonoBehaviour
     public float _timeScale;
     public bool isPaused;
 
+    private PedestalScript _pedestalScript;
+
 
     void Awake()
     {
         Application.targetFrameRate = FPSCap;
+        _pedestalScript = FindObjectOfType<PedestalScript>();
     }
 
     // Start is called before the first frame update
@@ -23,6 +26,10 @@ public class GameStateManager : MonoBehaviour
 
     private void Update()
     {
+        if (_pedestalScript.PedestalIsUnlocked())
+        {
+            Debug.Log("End");
+        }
         //Time.timeScale = _timeScale;
 
         if (isPaused)
