@@ -8,7 +8,7 @@ public class BrazierScript : MonoBehaviour
     public GameObject _brazierFire;
     public FloatingText _floatingText;
 
-    public Interact _interactionScript;
+    [HideInInspector] public Interact _interactionScript;
 
     public bool _lit;
     public bool _facedPlayer;
