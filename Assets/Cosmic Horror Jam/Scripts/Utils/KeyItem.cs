@@ -6,7 +6,7 @@ using UnityEngine;
 public enum EKeyItem
 {
     Top,
-    BottomLeft,
+    Center,
     BottomRight
 }
 

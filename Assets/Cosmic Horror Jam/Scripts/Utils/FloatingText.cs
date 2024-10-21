@@ -8,6 +8,7 @@ public class FloatingText : MonoBehaviour
 {
     [SerializeField] public GameObject _interactionText;
     public bool _textFacePlayerOnlyOnTrigger;
+    public bool _clampVerticalRotation = true;
 
     [Header("For Raycast Interaction")]
     public bool _usesRaycastInteraction;
@@ -61,23 +62,47 @@ public class FloatingText : MonoBehaviour
     {
         _interactionText.SetActive(true);
 
-        if (_textFacePlayerOnlyOnTrigger)
+        if (_clampVerticalRotation)
         {
-            if (!_textAppeared)
+            if (_textFacePlayerOnlyOnTrigger)
+            {
+                if (!_textAppeared)
+                {
+                    Vector3 directionToPlayer = Vector3.ProjectOnPlane(-(playerPos - _interactionText.transform.position), Vector3.up);
+
+                    _interactionText.transform.rotation = Quaternion.LookRotation(directionToPlayer, Vector3.up);
+
+                    _textAppeared = true;
+                }
+            }
+            else
             {
                 Vector3 directionToPlayer = Vector3.ProjectOnPlane(-(playerPos - _interactionText.transform.position), Vector3.up);
 
                 _interactionText.transform.rotation = Quaternion.LookRotation(directionToPlayer, Vector3.up);
-
-                _textAppeared = true;
             }
         }
         else
         {
-            Vector3 directionToPlayer = Vector3.ProjectOnPlane(-(playerPos - _interactionText.transform.position), Vector3.up);
+            if (_textFacePlayerOnlyOnTrigger)
+            {
+                if (!_textAppeared)
+                {
+                    Vector3 directionToPlayer = -(playerPos - _interactionText.transform.position);
 
-            _interactionText.transform.rotation = Quaternion.LookRotation(directionToPlayer, Vector3.up);
+                    _interactionText.transform.rotation = Quaternion.LookRotation(directionToPlayer, Vector3.up);
+
+                    _textAppeared = true;
+                }
+            }
+            else
+            {
+                Vector3 directionToPlayer = -(playerPos - _interactionText.transform.position);
+
+                _interactionText.transform.rotation = Quaternion.LookRotation(directionToPlayer, Vector3.up);
+            }
         }
+
     }
 
 

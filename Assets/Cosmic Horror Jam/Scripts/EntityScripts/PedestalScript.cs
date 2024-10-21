@@ -24,12 +24,12 @@ public class PedestalScript : MonoBehaviour
         _currentPlacementOrder = 0;
 
         keyDict.Add(EKeyItem.Top, keyPlacement_1);
-        keyDict.Add(EKeyItem.BottomLeft, keyPlacement_2);
+        keyDict.Add(EKeyItem.Center, keyPlacement_2);
         keyDict.Add(EKeyItem.BottomRight, keyPlacement_3);
 
         keyDict[EKeyItem.Top]._isPlaced = false;
 
-        keyDict[EKeyItem.BottomLeft]._isPlaced = false;
+        keyDict[EKeyItem.Center]._isPlaced = false;
 
         keyDict[EKeyItem.BottomRight]._isPlaced = false;
     }
@@ -43,7 +43,7 @@ public class PedestalScript : MonoBehaviour
     public EEnding GetEndingEnum()
     {
         if (keyDict[EKeyItem.Top]._placementOrder == 2 &&
-            keyDict[EKeyItem.BottomLeft]._placementOrder == 1 &&
+            keyDict[EKeyItem.Center]._placementOrder == 1 &&
             keyDict[EKeyItem.BottomRight]._placementOrder == 0)
         {
             return EEnding.Secret;
