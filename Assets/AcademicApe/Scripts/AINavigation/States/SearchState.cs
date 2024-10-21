@@ -5,10 +5,10 @@ public class SearchState : AIStateMachine
     // Start is called before the first frame update
 
     private Vector3 LastKnownposition;
-    private float searchDuration = 5f;
+    private float searchDuration = 10f;
     private float searchTimer;
 
-    //for 360 sweep
+    //for rotation
     public float rotationSpeed = 50f;
     private float totalRotation;
 
@@ -24,6 +24,8 @@ public class SearchState : AIStateMachine
         ai.Agent.speed = ai.patrolSpeed;
         searchDuration = 0f;
         totalRotation = 0f;
+        searchTimer = 0f;
+     
         Debug.Log("Entering SearchState");
     }
 
@@ -38,6 +40,8 @@ public class SearchState : AIStateMachine
         }
 
         //increment search timer for sweep duration
+        
+        
         if (!ai.Agent.pathPending && ai.Agent.remainingDistance <= ai.waypointTolerance)
         {
             searchTimer += Time.deltaTime;
@@ -53,6 +57,6 @@ public class SearchState : AIStateMachine
                 Debug.Log("No players found druing search, returning to Patrol");
                 ai.SwitchState(ai.patrolState);
             }
-        }
+        }     
     }
 }

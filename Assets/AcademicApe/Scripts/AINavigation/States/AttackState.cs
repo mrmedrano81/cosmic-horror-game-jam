@@ -24,6 +24,7 @@ public class AttackState : AIStateMachine
         {
             Debug.Log("Attacking Player");
             ai.Agent.SetDestination(detectedPlayer.position);
+            //Put Collider code when collides = game over
             
         }
 

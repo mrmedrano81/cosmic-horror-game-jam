@@ -67,6 +67,7 @@ public class AiManager : MonoBehaviour
     {
         currentState.UpdateState(this);
         CheckForVisualonPlayer();
+        
         waypointdetectedplayer = GetPlayerDetectedWaypoint();
         if (waypointdetectedplayer != null)
         {
@@ -121,7 +122,7 @@ public class AiManager : MonoBehaviour
         if(currentwaypointIndex <= Waypoints.Count)
         {
             Debug.Log("Patrol Points not exhausted");
-            currentwaypointIndex = (currentwaypointIndex + 1);
+            currentwaypointIndex = (currentwaypointIndex + 1) % Waypoints.Count;
             Agent.SetDestination(Waypoints[currentwaypointIndex].transform.position);
             Debug.Log($"Waypoint Index: {currentwaypointIndex}");
             Debug.Log($"Waypoint reached. Moving to next waypoint: {Waypoints[currentwaypointIndex].name}");

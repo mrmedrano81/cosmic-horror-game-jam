@@ -48,6 +48,7 @@ public class ChaseState : AIStateMachine
             if(ai.timeinsight >= ai.attacktrigger)
             {
                 Debug.Log("Contact Time condition fulfilled, going to attack state");
+                ai.timeinsight = 0;
                 ai.AttackTarget(player);
             }
             return;

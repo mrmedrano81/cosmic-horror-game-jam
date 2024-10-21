@@ -13,6 +13,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (_interactInput)
         {
+            Debug.Log("Reached Here");
             Interact interactScript = other.gameObject.transform.GetComponent<Interact>();
 
             if (interactScript)
