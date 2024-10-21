@@ -342,8 +342,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd6ab1eba59c7a48a0fc834ca9eac42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 2560
   _interactInput: 0
   inventory: {fileID: 5207801142562438531}
+  activeFloatingText: {fileID: 0}
 --- !u!135 &2045737077658120939
 SphereCollider:
   m_ObjectHideFlags: 0
