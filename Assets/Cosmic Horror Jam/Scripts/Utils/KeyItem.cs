@@ -12,7 +12,7 @@ public enum EKeyItem
 
 public class KeyItem : MonoBehaviour
 {
-    public EKeyItem keyPlacement;
+    public EKeyItem keyEnum;
     private Interact pickupFromInteract;
 
     private void OnEnable()
