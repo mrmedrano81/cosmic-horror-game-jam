@@ -15,6 +15,7 @@ public class ChaseState : AIStateMachine
     public override void EnterState(AiManager ai) 
     {
         Debug.Log("Entered ChaseState");
+        ai.spiderAnim.CrossFadeInFixedTime("Armature_SpiderChase_Anim", 0.1f);
         ai.timeinsight = 0f;
         //ai.Agent.areaMask = ai.GetAreaMaskforChase();
         ai.Agent.areaMask = ai.chaseAreaMask;
@@ -45,7 +46,7 @@ public class ChaseState : AIStateMachine
                 Debug.Log("Maintaining Distance From Player");
             }
 
-            if(ai.timeinsight >= ai.attacktrigger)
+            if(ai.timeinsight >= ai.attackTrigger)
             {
                 Debug.Log("Contact Time condition fulfilled, going to attack state");
                 ai.timeinsight = 0;
@@ -66,6 +67,6 @@ public class ChaseState : AIStateMachine
     {
         Vector3 direction = (targetpos - ai.transform.position).normalized;
         Quaternion targetrotation = Quaternion.LookRotation(direction);
-        ai.transform.rotation = Quaternion.Slerp(ai.transform.rotation, targetrotation, ai.airotationspeed *Time.deltaTime);
+        ai.transform.rotation = Quaternion.Slerp(ai.transform.rotation, targetrotation, ai.aiRotationSpeed *Time.deltaTime);
     }
 }

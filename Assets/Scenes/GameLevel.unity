@@ -1922,6 +1922,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestLights
       objectReference: {fileID: 0}
+    - target: {fileID: 4121967972230173377, guid: 5eb6ef8785f8a494bbafb30f07f16b0d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8705765657922540228, guid: 5eb6ef8785f8a494bbafb30f07f16b0d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2441,6 +2445,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Directional Light
       objectReference: {fileID: 0}
+    - target: {fileID: 6013827474447497036, guid: 9ec5711c28de4ec41b83de1fa0e07ec9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2502,6 +2510,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8830456357261005175, guid: 4d1fc553f6a84e44888a765d1e8d9f78, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
     - targetCorrespondingSourceObject: {fileID: 6280541318161288175, guid: 4d1fc553f6a84e44888a765d1e8d9f78, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}

@@ -14,7 +14,7 @@ public class AttackState : AIStateMachine
         Debug.Log("Entering AttackState");
         ai.IsAttackState = true;
         Debug.Log("AttackState = True");
-        ai.Agent.speed = ai.attackSpeed;
+        ai.Agent.speed = ai.attackMovementSpeed;
     }
 
     public override void UpdateState(AiManager ai)

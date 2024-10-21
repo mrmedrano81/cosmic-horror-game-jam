@@ -12,16 +12,17 @@ public class AiManager : MonoBehaviour
     [Header("AI Speed Parameters")]
     public float patrolSpeed = 3.0f;
     public float chaseSpeed = 5.0f;
-    public float attackSpeed = 10f;
+    public float attackMovementSpeed = 10f;
     public float minDistancetoPlayer = 2f;
-    public float attacktrigger = 10f;
-    public float airotationspeed = 5f;
+    public float attackTrigger = 10f;
+    public float aiRotationSpeed = 5f;
     [HideInInspector] public float timeinsight = 0f;
 
     [HideInInspector] public NavMeshAgent Agent;
     
     public AISight sightDetection;
     public List<WaypointDetection> Waypoints;
+    public Animator spiderAnim;
 
     //AI States
     private AIStateMachine currentState;
@@ -45,6 +46,7 @@ public class AiManager : MonoBehaviour
     {
         Agent = GetComponent<NavMeshAgent>();
         sightDetection = GetComponent<AISight>();
+        spiderAnim = GetComponentInChildren<Animator>();
 
         patrolAreaMask = 1 << NavMesh.GetAreaFromName(patrolAreaLayer);
         chaseAreaMask = 1 << NavMesh.GetAreaFromName(chaseAreaLayer);

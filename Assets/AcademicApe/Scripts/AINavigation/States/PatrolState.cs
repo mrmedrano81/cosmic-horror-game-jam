@@ -7,6 +7,7 @@ public class PatrolState : AIStateMachine
     {
         Debug.Log("Entered Patrol State");
         //ai.Agent.areaMask = ai.GetAreaMaskforPatrol();
+        ai.spiderAnim.CrossFadeInFixedTime("Armature_SpiderWalk_Anim", 0.1f);
         ai.Agent.areaMask = ai.patrolAreaMask;
         ai.Agent.speed = ai.patrolSpeed;
         if (!ai.Agent.pathPending || ai.Agent.remainingDistance < ai.waypointTolerance)
