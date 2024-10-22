@@ -571,7 +571,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2981960057846853534}
-  - component: {fileID: 5372864407827985428}
+  - component: {fileID: 8830371739916819097}
   m_Layer: 0
   m_Name: Elevator
   m_TagString: Untagged
@@ -599,7 +599,7 @@ Transform:
   - {fileID: 8689469720016192163}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5372864407827985428
+--- !u!114 &8830371739916819097
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

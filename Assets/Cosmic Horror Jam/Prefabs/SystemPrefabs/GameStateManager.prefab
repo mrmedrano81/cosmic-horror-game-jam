@@ -76,6 +76,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab182130b3dcba04c905644f9bae5195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  spawnSpot: {fileID: 0}
   FPSCap: 120
   _timeScale: 0
   isPaused: 0
+  _elevator: {fileID: 0}
