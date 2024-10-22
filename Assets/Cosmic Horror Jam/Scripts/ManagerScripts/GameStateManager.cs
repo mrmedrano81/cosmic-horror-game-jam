@@ -7,6 +7,8 @@ public class GameStateManager : MonoBehaviour
 {
     public PlayerKCC player;
     public Transform spawnSpot;
+    public KeyItemSpawner keyItemSpawner;
+    private PlayerInventory playerInventory;
 
     public int FPSCap;
     public float _timeScale;
@@ -24,6 +26,8 @@ public class GameStateManager : MonoBehaviour
         _playEndCutscene = false;
         Application.targetFrameRate = FPSCap;
         _pedestalScript = FindObjectOfType<PedestalScript>();
+        keyItemSpawner = FindObjectOfType<KeyItemSpawner>();
+        playerInventory = FindObjectOfType<PlayerInventory>();
     }
 
     // Start is called before the first frame update
@@ -60,5 +64,12 @@ public class GameStateManager : MonoBehaviour
     public void RespawnPlayer()
     {
         player.Motor.SetPosition(spawnSpot.position);
+
+        foreach (EKeyItem keyItemEnum in playerInventory.GetHeldKeyItems())
+        {
+            keyItemSpawner.ResetKeyPickup(keyItemEnum);
+        }
+
+        playerInventory.ClearInventory();
     }
 }

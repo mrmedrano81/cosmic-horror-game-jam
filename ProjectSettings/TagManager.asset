@@ -11,6 +11,7 @@ TagManager:
   - Torch
   - Key
   - Brazier
+  - KeySlot
   layers:
   - Default
   - TransparentFX
