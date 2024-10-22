@@ -548,11 +548,12 @@ namespace KinematicCharacterController
 
         public void OnGroundHit(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, ref HitStabilityReport hitStabilityReport)
         {
-
+            //Debug.Log(hitCollider.gameObject.name);
         }
 
         public void OnMovementHit(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, ref HitStabilityReport hitStabilityReport)
         {
+            //Debug.Log("mmovehit " + hitCollider.gameObject.name);
         }
 
         public void AddVelocity(Vector3 velocity)
@@ -582,7 +583,7 @@ namespace KinematicCharacterController
 
         public void OnDiscreteCollisionDetected(Collider hitCollider)
         {
-            
+            Debug.Log(hitCollider.gameObject.name);
         }
 
         private void OnDrawGizmos()
