@@ -46,7 +46,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -55,31 +55,31 @@ AudioSource:
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
+  rolloffMode: 2
+  BypassEffects: 1
+  BypassListenerEffects: 1
+  BypassReverbZones: 1
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
+      time: 0.002
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
+      value: 0.74494934
+      inSlope: -1.002004
+      outSlope: -1.002004
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -128,6 +128,37 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &2179967323160750091
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5800299563016150762}
+  m_Layer: 0
+  m_Name: ExternalAudioSources
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5800299563016150762
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2179967323160750091}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3012611579043790065}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5824373012112895982
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,6 +319,7 @@ Transform:
   m_Children:
   - {fileID: 9113063064161166242}
   - {fileID: 4648348836872598593}
+  - {fileID: 5800299563016150762}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6031661772376359971
@@ -304,21 +336,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 3803239807854215077}
   UIAudioSource: {fileID: 8061774166915485161}
-  musicList: []
+  musicList:
+  - {fileID: 8300000, guid: 16cb60acc710720418b28fa36460b265, type: 3}
+  - {fileID: 8300000, guid: ebf2d86667482ab44811826fec895888, type: 3}
   buttonSfxList: []
-  PlayerWalkSFX: []
-  PlayerRunSFX: []
-  PlayerJumpSFX: []
-  PlayerBreathingSFX: []
-  PlayerInsanitySFX: []
-  PlayerHeartbeatSFX: []
-  PlayerDieSFX: []
-  SpiderPatrolSFX: []
-  SpiderChaseSFX: []
-  SpiderSpotSFX: []
-  SpiderAttackSFX: []
-  TorchIdleSFX: []
-  TorchLightSFX: []
-  BrazierIdleSFX: []
+  PlayerFootstepSFX:
+  - {fileID: 8300000, guid: 9ff6bc1b669a3b54da82b73929a2bb89, type: 3}
+  - {fileID: 8300000, guid: e0de7b97edf682948beac930b78b752f, type: 3}
+  - {fileID: 8300000, guid: b14a09124fada0646be6e3a2f47613c7, type: 3}
+  - {fileID: 8300000, guid: eef566dc9e9abef488056846d71c8aab, type: 3}
+  - {fileID: 8300000, guid: e177b70c255c2c6408ace74c16aa5ca5, type: 3}
+  - {fileID: 8300000, guid: dc9a5e21ebe401445818a89731b1a2e1, type: 3}
+  - {fileID: 8300000, guid: 8e31ca81572ba9b418f7e02c19e74f9b, type: 3}
+  - {fileID: 8300000, guid: c35b2dfbb3c616049a4267ef2298b221, type: 3}
+  PlayerInsanitySFX:
+  - {fileID: 8300000, guid: b8f46492cec204e4f912b73a9fb242ef, type: 3}
+  PlayerDieSFX:
+  - {fileID: 8300000, guid: d28279b17acca674480c873d9538afb5, type: 3}
+  SpiderFootstepsSFX:
+  - {fileID: 8300000, guid: d843a2999bdfc874ab5bca1e18e0eda4, type: 3}
+  - {fileID: 8300000, guid: 6535c66c1fa997c4fb7168eafae48602, type: 3}
+  - {fileID: 8300000, guid: 480c13ccc1573d247b483f7e4698589c, type: 3}
+  - {fileID: 8300000, guid: 797a104e29c39df4291abd76dbe71155, type: 3}
+  - {fileID: 8300000, guid: c14cec8e65a6d0d4c81f518a5de0f925, type: 3}
+  - {fileID: 8300000, guid: bdc1bd42aa181fa4091bb4af94244dfa, type: 3}
+  - {fileID: 8300000, guid: a5211ad078a943949a9f5ec1c1854cc4, type: 3}
+  - {fileID: 8300000, guid: 67aa254d7dc792944b4b1769058894cf, type: 3}
+  - {fileID: 8300000, guid: 467c557ead20aad43af07aed64032de8, type: 3}
+  - {fileID: 8300000, guid: b4a7902b472688245b0371004b50be60, type: 3}
+  - {fileID: 8300000, guid: 1c7541e0bcf6acb49af1dd8bc1883b86, type: 3}
+  - {fileID: 8300000, guid: 5c2d10440c9fbd540b4efdb964dc60f8, type: 3}
+  SpiderIdleSFX:
+  - {fileID: 8300000, guid: 179fd354090859e41aace88ee5a82f76, type: 3}
+  SpiderAttackSFX:
+  - {fileID: 8300000, guid: efffb882ef47b35478d1af0dbb171d76, type: 3}
+  TorchIdleSFX:
+  - {fileID: 8300000, guid: d599dcd10e443dc49b74bdb94806c49e, type: 3}
+  TorchLightSFX:
+  - {fileID: 8300000, guid: 56fcb1aaa9593034b9928e207278e42f, type: 3}
+  BrazierIdleSFX:
+  - {fileID: 8300000, guid: 19e0f1a9396a3534c85d5d0ceda7fb46, type: 3}
   BrazierLightSFX: []
-  InteractSFX: []
+  InteractSFX:
+  - {fileID: 8300000, guid: 91910a0a60450074db95bbe98d644519, type: 3}
