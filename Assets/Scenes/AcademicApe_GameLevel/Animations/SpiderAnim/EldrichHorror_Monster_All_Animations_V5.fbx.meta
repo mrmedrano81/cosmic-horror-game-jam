@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3de4575772026a446bc712b2db4d7128
+guid: 7d24a28147cfde54ab3458c7e4dc3fa6
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -24,7 +24,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -62,9 +62,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Spider_Armature|SpiderAttackFull_Anim
-      takeName: Spider_Armature|SpiderAttackFull_Anim
-      internalID: -2063897842732612369
+      name: Armature|SpiderAttackFull_Anim
+      takeName: Armature|SpiderAttackFull_Anim
+      internalID: 1781884122682242635
       firstFrame: 0
       lastFrame: 76
       wrapMode: 0
@@ -73,7 +73,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -91,9 +91,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Spider_Armature|SpiderAttackJump_Anim
-      takeName: Spider_Armature|SpiderAttackJump_Anim
-      internalID: -3531590950331864219
+      name: Armature|SpiderAttackJump_Anim
+      takeName: Armature|SpiderAttackJump_Anim
+      internalID: -2195032458590781590
       firstFrame: 0
       lastFrame: 32
       wrapMode: 0
@@ -120,9 +120,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Spider_Armature|SpiderAttackWindup_Anim
-      takeName: Spider_Armature|SpiderAttackWindup_Anim
-      internalID: 8174383031659853056
+      name: Armature|SpiderAttackWindup_Anim
+      takeName: Armature|SpiderAttackWindup_Anim
+      internalID: 8406824369698850304
       firstFrame: 0
       lastFrame: 44
       wrapMode: 0
@@ -149,9 +149,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Spider_Armature|SpiderIdle_Anim
-      takeName: Spider_Armature|SpiderIdle_Anim
-      internalID: 4159659466026934930
+      name: Armature|SpiderIdle_Anim
+      takeName: Armature|SpiderIdle_Anim
+      internalID: 9057245904583251924
       firstFrame: 0
       lastFrame: 119
       wrapMode: 0
@@ -178,9 +178,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Spider_Armature|SpiderWalk_Anim
-      takeName: Spider_Armature|SpiderWalk_Anim
-      internalID: -2117678391200786621
+      name: Armature|SpiderWalk_Anim
+      takeName: Armature|SpiderWalk_Anim
+      internalID: -5482507964843636117
       firstFrame: 0
       lastFrame: 119
       wrapMode: 0
@@ -189,7 +189,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -267,7 +267,7 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 1
+    hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1

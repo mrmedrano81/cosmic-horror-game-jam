@@ -4,9 +4,11 @@ using UnityEngine;
 public class AttackState : AIStateMachine
 {
     private Transform player;
-    private float pauseduration = 1f;
+    private float pauseduration = 0.3f;
     private float pausetimer;
     public float distancetoPlayer;
+
+    private bool lungedone = false;
 
     public void SetTarget (Transform targetplayer)
     {
@@ -16,7 +18,7 @@ public class AttackState : AIStateMachine
 
     public override void EnterState(AiManager ai)
     {
-        ai.spiderAnim.Play("Spider_Armature|SpiderAttackFull_Anim");
+        ai.spiderAnim.Play("Armature|SpiderRun_Anim");
         Debug.Log("Entering AttackState");
         ai.IsAttackState = true;
         Debug.Log("AttackState = True");    
@@ -25,7 +27,8 @@ public class AttackState : AIStateMachine
 
     public override void UpdateState(AiManager ai)
     {
-        Debug.Log("Entered Update of Attack");
+        lungedone = false;
+        //Debug.Log("Entered Update of Attack");
         if (ai.sightDetection.CanSeePlayer(out Transform detectedPlayer))
         {
             distancetoPlayer = CheckDistancetoPlayer(ai, player);
@@ -33,21 +36,23 @@ public class AttackState : AIStateMachine
             float stopDistance = 2f;
             if(distancetoPlayer > ai.minDistancetoAttackPlayer)
             {
-                Debug.Log("Moving to Attack Position");
+                //Debug.Log("Moving to Attack Position");
                 ai.Agent.SetDestination(detectedPlayer.position - directiontoPlayer*stopDistance);
-                //ai.spiderAnim.Play("Armature_SpiderIdle_Anim");
+                ai.spiderAnim.Play("Armature|SpiderAttackJump_Anim");
                 pausetimer += Time.deltaTime;
 
                 if (pausetimer >= pauseduration)
                 {
+                    //ai.spiderAnim.Play("Armature|SpiderAttackFull_Anim");
                     Debug.Log("Attacking Player");
                     //ai.Agent.speed = 1f;
                     //pausetimer += Time.deltaTime;
                     ai.Agent.speed = 20f;
                     pausetimer = 0f;
                     //ai.Agent.speed = ai.attackMovementSpeed;
-                    ai.Agent.SetDestination(player.position);
+                    //ai.Agent.SetDestination(player.position);
                     Debug.Log("Lunging");
+                    
                 }
             }
 
@@ -72,7 +77,7 @@ public class AttackState : AIStateMachine
 
         else if (!(ai.sightDetection.CanSeePlayer(out Transform player)))
         {
-            Debug.Log("Lost sight of player, switching to SearchState from AttackState");
+            //Debug.Log("Lost sight of player, switching to SearchState from AttackState");
             Vector3 lastpos = ai.Agent.destination;
             ai.IsAttackState = false;
             ai.SwitchState(new SearchState(lastpos));
