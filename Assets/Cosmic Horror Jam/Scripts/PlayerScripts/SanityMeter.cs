@@ -10,7 +10,7 @@ public class SanityMeter : MonoBehaviour
 
     [Header ("Sanity Parameters")] 
     public float _maxSanity = 100f; //Sanity Cap
-    public float _sanityDecreaseRate = 0.5f; //Sanity tick damage 
+    public float _sanityDecreaseRate = 2f; //Sanity tick damage 
     public float _currentSanity; //Current Sanity 
     public float _sanityGain; //For Brazier Sanity Regen 
 
