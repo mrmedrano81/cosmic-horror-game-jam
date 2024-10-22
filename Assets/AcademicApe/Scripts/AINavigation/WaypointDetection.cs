@@ -18,11 +18,11 @@ public class WaypointDetection : MonoBehaviour
         Collider[] hits = Physics.OverlapSphere(transform.position, detectionRadius, playerLayer);
         if (hits.Length > 0)
         {
-            Debug.Log("Waypoint Detected Player");
+            //Debug.Log("Waypoint Detected Player");
             lastdetectionTime = Time.time;
             return true;
         }
-        Debug.Log("Waypoint Did Not Detect Player");
+        //Debug.Log("Waypoint Did Not Detect Player");
         return false;
        
 

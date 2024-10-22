@@ -27,7 +27,7 @@ public class SearchState : AIStateMachine
         totalRotation = 0f;
         searchTimer = 0f;
      
-        Debug.Log("Entering SearchState");
+        //Debug.Log("Entering SearchState");
     }
 
     public override void UpdateState(AiManager ai)
@@ -55,7 +55,7 @@ public class SearchState : AIStateMachine
             }
             else if(searchTimer > searchDuration)
             {
-                Debug.Log("No players found druing search, returning to Patrol");
+                //Debug.Log("No players found druing search, returning to Patrol");
                 ai.SwitchState(ai.patrolState);
             }
         }     
