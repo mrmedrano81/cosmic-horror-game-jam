@@ -9,8 +9,8 @@ public class FieldOfView : MonoBehaviour
     [Range(0f, 360f)]
     public float viewAngle;
 
-    public LayerMask targetMask;
-    public LayerMask obstacleMask;
+    [SerializeField] private LayerMask targetMask;
+    [SerializeField] private LayerMask obstacleMask;
 
     public List<Transform> visibleTargets = new List<Transform>();
 
@@ -33,6 +33,7 @@ public class FieldOfView : MonoBehaviour
     void FindVisibleTargets()
     {
         visibleTargets.Clear();
+        Debug.Log("List Cleared");
 
         Collider[] targetsInViewRadis = Physics.OverlapSphere(transform.position, viewRadius, targetMask);
 

@@ -6,12 +6,9 @@ using UnityEngine;
 
 public class PlayerAirborneState : PlayerBaseState
 {
-    private bool _aerialCombat;
-
     public PlayerAirborneState(PlayerKCC currentContext, PlayerStateFactory playerStateFactory) : base(currentContext, playerStateFactory)
     {
         _isRootState = true;
-        _aerialCombat = false;
     }
 
     public override void SetInput(ref PlayerCharacterInputs inputs)

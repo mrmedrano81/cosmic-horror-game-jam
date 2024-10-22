@@ -7,6 +7,8 @@ TagManager:
   - Ground and Walls
   - Waypoints
   - Obstacles
+  - Enemy
+  - Torch
   layers:
   - Default
   - TransparentFX
@@ -17,9 +19,9 @@ TagManager:
   - Player Layer
   - Enemy
   - PostProcessing
-  - 
-  - 
-  - 
+  - Interactable
+  - Camera
+  - KeyPlacement
   - 
   - 
   - 

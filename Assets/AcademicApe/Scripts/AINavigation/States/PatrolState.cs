@@ -6,8 +6,14 @@ public class PatrolState : AIStateMachine
     public override void EnterState(AiManager ai)
     {
         Debug.Log("Entered Patrol State");
+        //ai.Agent.areaMask = ai.GetAreaMaskforPatrol();
+        ai.spiderAnim.CrossFadeInFixedTime("Armature_SpiderWalk_Anim", 0.1f);
+        ai.Agent.areaMask = ai.patrolAreaMask;
         ai.Agent.speed = ai.patrolSpeed;
-        ai.MovetoNextWaypoint();
+        if (!ai.Agent.pathPending || ai.Agent.remainingDistance < ai.waypointTolerance)
+        {
+            ai.Agent.SetDestination(ai.Waypoints[ai.currentwaypointIndex].transform.position);
+        }
     }
 
     // Update is called once per frame
@@ -18,5 +24,6 @@ public class PatrolState : AIStateMachine
             Debug.Log("Reached Waypoint, going to next waypoint");
             ai.MovetoNextWaypoint();
         }
+        //ai.swarmBehaviour.Update();
     }
 }

@@ -1,30 +1,33 @@
 using UnityEngine;
-using System;
 
 
 public class WaypointDetection : MonoBehaviour
 {
     public float detectionRadius = 5.0f;
     public LayerMask playerLayer;
+    public float detectionCD = 120f;
 
-    public event Action<Transform> OnPlayerDetected;
+    private float lastdetectionTime = -Mathf.Infinity;
 
-    void Update()
+    public bool IsPlayerNearby()
     {
-        DetectPlayerInRadius();
-    }
+        //Check Cooldown Timer
+        if (Time.time < lastdetectionTime + detectionCD)
+            return false;
 
-    private void DetectPlayerInRadius()
-    {
         Collider[] hits = Physics.OverlapSphere(transform.position, detectionRadius, playerLayer);
-
-        if (hits.Length >0 )
+        if (hits.Length > 0)
         {
-            Debug.Log("Waypoint Detected Player, relaying to AI");
-            OnPlayerDetected?.Invoke(transform);
+            //Debug.Log("Waypoint Detected Player");
+            lastdetectionTime = Time.time;
+            return true;
         }
-    }
+        //Debug.Log("Waypoint Did Not Detect Player");
+        return false;
+       
 
+    }
+   
     private void OnDrawGizmosSelected()
     {
       Gizmos.color = Color.yellow;
