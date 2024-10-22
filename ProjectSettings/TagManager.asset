@@ -8,6 +8,7 @@ TagManager:
   - Waypoints
   - Obstacles
   - Enemy
+  - Torch
   layers:
   - Default
   - TransparentFX

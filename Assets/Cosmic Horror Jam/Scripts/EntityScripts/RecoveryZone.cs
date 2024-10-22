@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SanityRecoveryZone : MonoBehaviour
+public class RecoveryZone : MonoBehaviour
 {
     [Header("Sanity Recovery Parameters")]
     public float _sanityRecoveryRate = 5f; //Sanity Points Restored
@@ -11,8 +11,8 @@ public class SanityRecoveryZone : MonoBehaviour
     private float _sanityRecoveryTimer;
     public float _sanityRecoveryInterval = 1f; //Mike's Code
 
-
     [HideInInspector] public SanityMeter SAN; // Reference SanityMeter script
+    [HideInInspector] public TorchStatusScript torch; // Reference SanityMeter script
 
     //public float _sanityRecoveryInterval; Mike's Code
 
@@ -35,8 +35,16 @@ public class SanityRecoveryZone : MonoBehaviour
                 }
             }
             else if (SAN != null) Debug.Log("Sanity Meter not referenced");
+        }
 
+        if (other.gameObject.CompareTag("Torch"))
+        {
+            torch = other.gameObject.GetComponent<TorchStatusScript>();
 
+            if (torch)
+            {
+                torch.currentValue = torch.maxValue;
+            }
         }
     }
 
@@ -75,7 +83,16 @@ public class SanityRecoveryZone : MonoBehaviour
         Debug.Log($"Current Sanity: {SAN._currentSanity}");
 
         yield return new WaitForSeconds(_sanityRecoveryInterval);
+    }
 
+    private IEnumerator _RecoverTorch()
+    {
+        SAN._currentSanity += _sanityRecoveryRate;
+        SAN._currentSanity = Mathf.Min(SAN._currentSanity, 100);
+
+        Debug.Log($"Current Sanity: {SAN._currentSanity}");
+
+        yield return new WaitForSeconds(_sanityRecoveryInterval);
     }
 
 

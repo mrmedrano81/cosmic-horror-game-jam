@@ -6,6 +6,7 @@ using UnityEngine;
 public class BrazierScript : MonoBehaviour
 {
     public GameObject _brazierFire;
+    public GameObject _sanityTriggerZone;
     public FloatingText _floatingText;
 
     [HideInInspector] public Interact _interactionScript;
@@ -62,7 +63,7 @@ public class BrazierScript : MonoBehaviour
         _brazierFire.SetActive(true);
         _floatingText.enabled = false;
         _floatingText._interactionText.SetActive(false);
-        
+        _sanityTriggerZone.SetActive(true);
 
         gameObject.SetActive(false);
     }
