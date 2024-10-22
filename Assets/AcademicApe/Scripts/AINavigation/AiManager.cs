@@ -14,6 +14,7 @@ public class AiManager : MonoBehaviour
     public float chaseSpeed = 5.0f;
     public float attackMovementSpeed = 10f;
     public float minDistancetoPlayer = 2f;
+    public float minDistancetoAttackPlayer = 2f;
     public float attackTrigger = 10f;
     public float aiRotationSpeed = 5f;
     [HideInInspector] public float timeinsight = 0f;
@@ -41,6 +42,10 @@ public class AiManager : MonoBehaviour
     [HideInInspector] public int patrolAreaMask;
     [HideInInspector] public int chaseAreaMask;
 
+
+    //Handling AI Colliders
+    //public Collider spiderCollider;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,10 +61,17 @@ public class AiManager : MonoBehaviour
         chaseState = new ChaseState();
         attackState = new AttackState();
         IsAttackState = false;
-        
+
+        /*/Handle Colliders
+        spiderCollider = GetComponent<Collider>();
+        if(spiderCollider == null)
+        {
+            Debug.Log("No Collider referenced");
+        }
+        */
 
 
-        Debug.Log("going to first patrol state");
+        //Debug.Log("going to first patrol state");
         currentState = patrolState;
         currentState.EnterState(this);
     }
@@ -88,7 +100,7 @@ public class AiManager : MonoBehaviour
 
         if(IsAttackState && !(newstate is AttackState))
         {
-            Debug.Log("SwitchState Blocked Due to AttackState");
+            //Debug.Log("SwitchState Blocked Due to AttackState");
             return;
         }
         if (currentState != newstate)
@@ -139,6 +151,16 @@ public class AiManager : MonoBehaviour
 
         
     }
+
+    /*
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Spider HIT Player");
+        }
+    }
+    */
 
     private WaypointDetection GetPlayerDetectedWaypoint()
     {

@@ -24,13 +24,13 @@ public class AISight : MonoBehaviour
                 if (!Physics.Raycast(transform.position, directiontoPlayer, distancetoPlayer, obstacleLayer))
                 {
                     playerTransform = player.transform;
-                    Debug.Log("Player Seen in SIGHT");
+                    //Debug.Log("Player Seen in SIGHT");
                     return true;
                 }
             }
         }
         playerTransform = null;
-        Debug.Log("Player Not Seen in SIGHT");
+        //Debug.Log("Player Not Seen in SIGHT");
         return false;
     }
 

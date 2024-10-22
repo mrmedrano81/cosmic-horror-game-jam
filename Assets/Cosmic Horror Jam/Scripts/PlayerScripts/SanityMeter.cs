@@ -6,12 +6,65 @@ public class SanityMeter : MonoBehaviour
 {
     public FieldOfView _fov;
 
-    public float _maxSanity;
-    public float _currentSanity;
-    public float _sanityGain;
+    //
+
+    [Header ("Sanity Parameters")] 
+    public float _maxSanity = 100f; //Sanity Cap
+    public float _sanityDecreaseRate = 0.5f; //Sanity tick damage 
+    public float _currentSanity; //Current Sanity 
+    public float _sanityGain; //For Brazier Sanity Regen 
+
+    private float _ticktimer;
+    private float _sanityDecreaseTick = 1f;
+    private bool _IsEnemySeen = false;
 
     private void Awake()
     {
-        
+        _currentSanity = _maxSanity;
+        _fov = GetComponent<FieldOfView>();
+        _IsEnemySeen = false;
+        _ticktimer = 0f;
+    }
+
+    private void Update()
+    {
+        _IsEnemySeen = _EnemySeen();
+
+        if( _IsEnemySeen)
+        {
+            Debug.Log("Sanity Taking Hits");
+            _ticktimer += Time.deltaTime;
+            if( _ticktimer > _sanityDecreaseTick)
+            {
+                _DecreaseSanity();
+                _ticktimer = 0f;    
+            }
+        }
+
+        else _IsEnemySeen = false;
+    }
+
+    private bool _EnemySeen()
+    {
+        if (_fov.visibleTargets.Count > 0) // If FOV Raycast hits enemy targets and registers enemies
+        {
+            return true;
+        }
+
+        else { return false; }
+    }
+
+    private void _DecreaseSanity()
+    {
+        _currentSanity -= _sanityDecreaseRate; //Apply Sanity Damage
+        _currentSanity = Mathf.Max(0, _currentSanity); //Clamp to 0
+
+        Debug.Log($"Current Sanity: { _currentSanity}");
+
+        if(_currentSanity <= 0)
+            {
+                Debug.Log("Insanity Sets In");
+                //Respawn Logic
+            }
     }
 }

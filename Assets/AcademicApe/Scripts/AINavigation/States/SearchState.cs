@@ -20,6 +20,7 @@ public class SearchState : AIStateMachine
 
     public override void EnterState(AiManager ai)
     {
+        ai.spiderAnim.CrossFadeInFixedTime("Armature_SpiderWalk_Anim", 0.1f);
         ai.Agent.SetDestination(LastKnownposition);
         ai.Agent.speed = ai.patrolSpeed;
         searchDuration = 0f;

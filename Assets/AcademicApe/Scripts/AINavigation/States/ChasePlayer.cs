@@ -30,25 +30,25 @@ public class ChaseState : AIStateMachine
         {
             ai.timeinsight += Time.deltaTime;
             float distancetoPlayer = Vector3.Distance(ai.transform.position, player.transform.position);
-            Debug.Log("AI sees Player");
+            //Debug.Log("AI sees Player");
 
             RotateTowards(ai, player.position);
 
             if (distancetoPlayer > ai.minDistancetoPlayer)
             {
                 ai.Agent.SetDestination(player.position);
-                Debug.Log("Approaching Player");
+                //Debug.Log("Approaching Player");
             }
 
             else
             {
                 ai.Agent.ResetPath();
-                Debug.Log("Maintaining Distance From Player");
+                //Debug.Log("Maintaining Distance From Player");
             }
 
             if(ai.timeinsight >= ai.attackTrigger)
             {
-                Debug.Log("Contact Time condition fulfilled, going to attack state");
+                //Debug.Log("Contact Time condition fulfilled, going to attack state");
                 ai.timeinsight = 0;
                 ai.AttackTarget(player);
             }
