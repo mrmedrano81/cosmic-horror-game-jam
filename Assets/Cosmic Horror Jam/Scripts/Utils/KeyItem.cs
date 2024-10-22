@@ -5,9 +5,11 @@ using UnityEngine;
 
 public enum EKeyItem
 {
+    None,
     Top,
     Center,
-    BottomRight
+    BottomRight,
+    BottomLeft
 }
 
 public class KeyItem : MonoBehaviour

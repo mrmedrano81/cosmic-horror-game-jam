@@ -4,32 +4,23 @@ using UnityEngine;
 
 public class KeyItemSpawner : MonoBehaviour
 {
-    public Transform[] _spawnLocations;
-    public GameObject _keyItem;
-    private List<GameObject> _keyItemsArray = new List<GameObject>();
+    public GameObject keyItemPickup_1;
+    public GameObject keyItemPickup_2;
+    public GameObject keyItemPickup_3;
 
-    // Start is called before the first frame update
-    void Start()
+    private Dictionary<EKeyItem, GameObject> keyItemsDict = new Dictionary<EKeyItem, GameObject>();
+
+    private void Awake()
     {
-        if (_spawnLocations.Length == 0 || _keyItem == null)
-        {
-            Debug.LogError("check spawn locations or key item prefab in KeyItemSpawner");
-            //Debug.Break();
-        }
-
-        else
-        {
-            foreach (Transform location in _spawnLocations)
-            {
-                GameObject keyItem = Instantiate(_keyItem, location.position, Quaternion.identity);
-                _keyItemsArray.Add(keyItem);
-            }
-        }
+        keyItemsDict.Add(EKeyItem.BottomRight, keyItemPickup_1);
+        keyItemsDict.Add(EKeyItem.Top, keyItemPickup_2);
+        keyItemsDict.Add(EKeyItem.Center, keyItemPickup_3);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ResetKeyPickup(EKeyItem keyItem)
     {
-        
+        keyItemsDict[keyItem].SetActive(true);
     }
+
+
 }

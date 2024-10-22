@@ -47,8 +47,18 @@ public class PlayerInteraction : MonoBehaviour
                 activeFloatingText = other.GetComponent<FloatingText>();
 
                 if (activeFloatingText)
-                {
-                    activeFloatingText.ShowText(Camera.main.transform.position);
+                {    
+                    if (other.gameObject.CompareTag("KeySlot"))
+                    {
+                        if (PlayerHasKeyItem(other.gameObject.GetComponent<KeyPlacement>()))
+                        {
+                            activeFloatingText.ShowText(Camera.main.transform.position);
+                        }
+                    }
+                    else
+                    {
+                        activeFloatingText.ShowText(Camera.main.transform.position);
+                    }
                 }
 
                 if (_interactInput)
@@ -57,17 +67,31 @@ public class PlayerInteraction : MonoBehaviour
 
                     if (interactScript)
                     {
-                        interactScript.CallInteract(this);  // Call the interaction on the object
-
                         if (other.gameObject.CompareTag("Key"))
                         {
                             AudioManager.instance.PlaySFX(playerAudio.interactionSource, EOtherSFX.Interact);
+                            interactScript.CallInteract(this);
+                        }
+                        else if (other.gameObject.CompareTag("KeySlot"))
+                        {
+                            KeyPlacement targetKeySlot = other.gameObject.GetComponent<KeyPlacement>();
+
+                            if (PlayerHasKeyItem(targetKeySlot))
+                            {
+                                interactScript.CallInteract(this);
+                                AudioManager.instance.PlaySFX(playerAudio.interactionSource, EOtherSFX.Interact);
+                                inventory.RemoveKey(targetKeySlot.keyEnum);
+                            }
                         }
                         else if (other.gameObject.CompareTag("Brazier"))
                         {
                             AudioManager.instance.PlaySFX(playerAudio.interactionSource, ELightingSFX.TorchLight);
+                            interactScript.CallInteract(this);
                         }
-                        //Debug.Log("Interacted with " + other.gameObject.name);
+                        else
+                        {
+                            interactScript.CallInteract(this);
+                        }
                     }
                     else
                     {
@@ -85,7 +109,17 @@ public class PlayerInteraction : MonoBehaviour
 
                 if (activeFloatingText)
                 {
-                    activeFloatingText.ShowText(Camera.main.transform.position);
+                    if (other.gameObject.CompareTag("KeySlot"))
+                    {
+                        if (PlayerHasKeyItem(other.gameObject.GetComponent<KeyPlacement>()))
+                        {
+                            activeFloatingText.ShowText(Camera.main.transform.position);
+                        }
+                    }
+                    else
+                    {
+                        activeFloatingText.ShowText(Camera.main.transform.position);
+                    }
                 }
 
                 if (_interactInput)
@@ -94,19 +128,31 @@ public class PlayerInteraction : MonoBehaviour
 
                     if (interactScript)
                     {
-
                         if (other.gameObject.CompareTag("Key"))
                         {
                             AudioManager.instance.PlaySFX(playerAudio.interactionSource, EOtherSFX.Interact);
+                            interactScript.CallInteract(this);
+                        }
+                        else if (other.gameObject.CompareTag("KeySlot"))
+                        {
+                            KeyPlacement targetKeySlot = other.gameObject.GetComponent<KeyPlacement>();
+
+                            if (PlayerHasKeyItem(targetKeySlot))
+                            {
+                                interactScript.CallInteract(this);
+                                AudioManager.instance.PlaySFX(playerAudio.interactionSource, EOtherSFX.Interact);
+                                inventory.RemoveKey(targetKeySlot.keyEnum);
+                            }
                         }
                         else if (other.gameObject.CompareTag("Brazier"))
                         {
                             AudioManager.instance.PlaySFX(playerAudio.interactionSource, ELightingSFX.TorchLight);
+                            interactScript.CallInteract(this);
                         }
-
-                        interactScript.CallInteract(this);  // Call the interaction
-
-                        //Debug.Log("Interacted with " + other.gameObject.name);
+                        else
+                        {
+                            interactScript.CallInteract(this);
+                        }
                     }
                     else
                     {
@@ -137,5 +183,20 @@ public class PlayerInteraction : MonoBehaviour
     public void AddKeyItemToInventory(KeyItem keyItem)
     {
         inventory.keyItems.Add(keyItem);
+    }
+
+    public bool PlayerHasKeyItem(KeyPlacement keyPlacement)
+    {
+        List<EKeyItem> currentPlayerKeys = inventory.GetHeldKeyItems();
+
+        foreach (EKeyItem keyEnum in currentPlayerKeys)
+        {
+            if (keyEnum == keyPlacement.keyEnum)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
