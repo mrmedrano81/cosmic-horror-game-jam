@@ -5,7 +5,7 @@ public class PatrolState : AIStateMachine
     // Start is called before the first frame update
     public override void EnterState(AiManager ai)
     {
-        Debug.Log("Entered Patrol State");
+        //Debug.Log("Entered Patrol State");
         //ai.Agent.areaMask = ai.GetAreaMaskforPatrol();
         ai.spiderAnim.CrossFadeInFixedTime("Armature_SpiderWalk_Anim", 0.1f);
         ai.Agent.areaMask = ai.patrolAreaMask;
@@ -21,7 +21,7 @@ public class PatrolState : AIStateMachine
     {
        if(!ai.Agent.pathPending && ai.Agent.remainingDistance <= ai.waypointTolerance)
         {
-            Debug.Log("Reached Waypoint, going to next waypoint");
+            //Debug.Log("Reached Waypoint, going to next waypoint");
             ai.MovetoNextWaypoint();
         }
         //ai.swarmBehaviour.Update();

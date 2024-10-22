@@ -75,7 +75,7 @@ public class AiManager : MonoBehaviour
         if (waypointdetectedplayer != null)
         {
             MovetoWaypoint(waypointdetectedplayer);
-            Debug.Log("Waypoint Detection Alert");
+            //Debug.Log("Waypoint Detection Alert");
         }
         else
         {
@@ -118,24 +118,24 @@ public class AiManager : MonoBehaviour
     {
         //Immediately Set Destination
         Agent.SetDestination(waypointdetectedplayer.transform.position);
-        Debug.Log($"Player detected at waypoint: {waypointdetectedplayer.name}");
+        //Debug.Log($"Player detected at waypoint: {waypointdetectedplayer.name}");
     }
     public void MovetoNextWaypoint()
     {
         if(currentwaypointIndex <= Waypoints.Count)
         {
-            Debug.Log("Patrol Points not exhausted");
+            //Debug.Log("Patrol Points not exhausted");
             currentwaypointIndex = (currentwaypointIndex + 1) % Waypoints.Count;
             Agent.SetDestination(Waypoints[currentwaypointIndex].transform.position);
-            Debug.Log($"Waypoint Index: {currentwaypointIndex}");
-            Debug.Log($"Waypoint reached. Moving to next waypoint: {Waypoints[currentwaypointIndex].name}");
+            //Debug.Log($"Waypoint Index: {currentwaypointIndex}");
+            //Debug.Log($"Waypoint reached. Moving to next waypoint: {Waypoints[currentwaypointIndex].name}");
         }
         else if(currentwaypointIndex > Waypoints.Count)
         {
-            Debug.Log("Patrol Points exhausted");
+            //Debug.Log("Patrol Points exhausted");
             currentwaypointIndex = 0;
             Agent.SetDestination(Waypoints[currentwaypointIndex].transform.position);
-            Debug.Log($"Waypoint reached. Moving to next waypoint: {Waypoints[currentwaypointIndex].name}");
+           //Debug.Log($"Waypoint reached. Moving to next waypoint: {Waypoints[currentwaypointIndex].name}");
         }
 
         

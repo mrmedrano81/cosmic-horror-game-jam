@@ -14,7 +14,7 @@ public class ChaseState : AIStateMachine
 
     public override void EnterState(AiManager ai) 
     {
-        Debug.Log("Entered ChaseState");
+        //Debug.Log("Entered ChaseState");
         ai.spiderAnim.CrossFadeInFixedTime("Armature_SpiderChase_Anim", 0.1f);
         ai.timeinsight = 0f;
         //ai.Agent.areaMask = ai.GetAreaMaskforChase();

@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class SpiderCollider : MonoBehaviour
 {
     // Start is called before the first frame update
+    public GameStateManager _gamestateManager;
     void Start()
     {
+        _gamestateManager = FindObjectOfType<GameStateManager>();
         
     }
 
@@ -19,11 +21,12 @@ public class NewBehaviourScript : MonoBehaviour
    
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Spider Hit Object" + other.gameObject.name);
+        //Debug.Log("Spider Hit Object" + other.gameObject.name);
         if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Spider Hit Player");
             //GameOverLogic
+            _gamestateManager.GameOver();
         }
     }
     

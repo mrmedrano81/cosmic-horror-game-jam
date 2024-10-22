@@ -19,9 +19,9 @@ public class AttackState : AIStateMachine
     public override void EnterState(AiManager ai)
     {
         ai.spiderAnim.Play("Armature|SpiderRun_Anim");
-        Debug.Log("Entering AttackState");
+        //Debug.Log("Entering AttackState");
         ai.IsAttackState = true;
-        Debug.Log("AttackState = True");    
+        //Debug.Log("AttackState = True");    
         ai.Agent.speed = ai.attackMovementSpeed;
     }
 

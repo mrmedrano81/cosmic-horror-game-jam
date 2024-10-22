@@ -2,7 +2,8 @@ using KinematicCharacterController;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class GameStateManager : MonoBehaviour
 {
     public PlayerKCC player;
@@ -17,6 +18,10 @@ public class GameStateManager : MonoBehaviour
 
     public GameObject _elevator;
 
+    [Header("Game Over UI")]
+    public GameObject gameOverPanel;
+    public float restartDelay = 2f;
+
 
     void Awake()
     {
@@ -24,6 +29,7 @@ public class GameStateManager : MonoBehaviour
         _playEndCutscene = false;
         Application.targetFrameRate = FPSCap;
         _pedestalScript = FindObjectOfType<PedestalScript>();
+        gameOverPanel.SetActive(false);
     }
 
     // Start is called before the first frame update
@@ -60,5 +66,18 @@ public class GameStateManager : MonoBehaviour
     public void RespawnPlayer()
     {
         player.Motor.SetPosition(spawnSpot.position);
+    }
+
+    public void GameOver()
+    {
+        isPaused = true;
+        gameOverPanel.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void ReloadGame()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
