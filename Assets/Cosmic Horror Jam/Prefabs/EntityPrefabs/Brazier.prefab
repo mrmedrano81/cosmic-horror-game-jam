@@ -84,18 +84,18 @@ MonoBehaviour:
   innerLight: {fileID: 5051161666791273558}
   secondLayerLight: {fileID: 8702090599283772416}
   thirdLayerLight: {fileID: 7554292318555455211}
-  innerMinIntensity: 15
+  innerMinIntensity: 17
   innerMaxIntensity: 20
-  secondMinIntensity: 10
+  secondMinIntensity: 17
   secondMaxIntensity: 20
   thirdMinIntensity: 5
   thirdMaxIntensity: 10
-  innerMinRange: 6
-  innerMaxRange: 7
-  secondMinRange: 10
-  secondMaxRange: 15
+  innerMinRange: 8
+  innerMaxRange: 10
+  secondMinRange: 15
+  secondMaxRange: 30
   thirdMinRange: 40
-  thirdMaxRange: 50
+  thirdMaxRange: 70
   flickerSpeed: 4
 --- !u!1 &4278238683750935699
 GameObject:
@@ -460,6 +460,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interactionText: {fileID: 5899611223033950623}
   _textFacePlayerOnlyOnTrigger: 0
+  _usesRaycastInteraction: 0
+  _playerFacingObject: 0
 --- !u!1 &5970940102395957769
 GameObject:
   m_ObjectHideFlags: 0

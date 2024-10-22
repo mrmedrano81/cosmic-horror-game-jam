@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(MeshRenderer))]
 [RequireComponent(typeof(FloatingText))]
-[RequireComponent(typeof(BoxCollider))]
+[RequireComponent(typeof(SphereCollider))]
 [RequireComponent(typeof(Interact))]
 [RequireComponent(typeof(Rigidbody))]
 
@@ -14,7 +14,7 @@ public class KeyPlacement : MonoBehaviour
     public EKeyItem keyEnum;
     private MeshRenderer _keyMeshRenderer;
     private FloatingText _floatingText;
-    private BoxCollider _boxCollider;
+    private SphereCollider _collider;
     private Interact _interactScript;
     private Rigidbody _rb;
 
@@ -26,11 +26,11 @@ public class KeyPlacement : MonoBehaviour
     {
         _keyMeshRenderer = GetComponent<MeshRenderer>();
         _floatingText = GetComponent<FloatingText>();
-        _boxCollider = GetComponent<BoxCollider>();
+        _collider = GetComponent<SphereCollider>();
         _rb = GetComponent<Rigidbody>();
 
         _keyMeshRenderer.enabled = false;
-        _boxCollider.enabled = true;
+        _collider.enabled = true;
         _floatingText.enabled = true;
         _floatingText._interactionText.SetActive(false);
         _isPlaced = false;
@@ -81,7 +81,7 @@ public class KeyPlacement : MonoBehaviour
             _floatingText._interactionText.SetActive(false);
             _floatingText.enabled = false;
             _keyMeshRenderer.enabled = true;
-            _boxCollider.enabled = false;
+            _collider.enabled = false;
         }
     }
 }

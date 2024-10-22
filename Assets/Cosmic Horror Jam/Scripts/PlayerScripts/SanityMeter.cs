@@ -67,4 +67,12 @@ public class SanityMeter : MonoBehaviour
                 //Respawn Logic
             }
     }
+
+    public void CheckIfLookingAtSpider()
+    {
+        if (_fov.visibleTargets.Count > 0)
+        {
+            // decrease sanity
+        }
+    }
 }
