@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5879265340173977061}
   - component: {fileID: 128697349587230407}
   - component: {fileID: 926158095337542891}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: RunePiece1
-  m_TagString: Untagged
+  m_TagString: Key
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,13 +26,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8389739192669657584}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 100}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 110, y: 109.999985, z: 109.999985}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!33 &128697349587230407
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -61,8 +61,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7623717159245872300, guid: 3882dc442187c4a41bc3f1ea8a29bd2f, type: 3}
-  - {fileID: 5595426204413900933, guid: 3882dc442187c4a41bc3f1ea8a29bd2f, type: 3}
+  - {fileID: -4369639564858639052, guid: c6135a24f739aae42a900bf99bf7dfb0, type: 3}
+  - {fileID: 2100000, guid: d79cc6ebbd4c42d4085db747501b669e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

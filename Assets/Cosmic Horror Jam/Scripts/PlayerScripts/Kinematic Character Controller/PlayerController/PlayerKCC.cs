@@ -66,6 +66,7 @@ namespace KinematicCharacterController
         public KinematicCharacterMotor Motor;
         public Animator _animator;
         public FieldOfView _fov;
+        public PlayerAudioScript _audioScript;
 
         [Header("State Machine")]
         PlayerBaseState _currentState;
@@ -180,6 +181,8 @@ namespace KinematicCharacterController
             _animator = GetComponent<Animator>();
 
             _fov = GetComponent<FieldOfView>();
+
+            _audioScript = GetComponent<PlayerAudioScript>();
 
             // ----------------------------------- //
 

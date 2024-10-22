@@ -7,19 +7,14 @@ using UnityEngine;
 public enum EPlayerSFX
 {
     Walk,
-    Run,
-    Jump,
-    Breathing,
     Insanity,
-    Heartbeat,
     Die
 }
 
 public enum EEnemySFX
 {
-    SpiderPatrol,
-    SpiderChase,
-    SpiderSpot,
+    SpiderFootstep,
+    SpiderIdle,
     SpiderAttack
 }
 
@@ -43,9 +38,10 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
 
-    [Header("References")]
+    [Header("General Audio Sources")]
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private AudioSource UIAudioSource;
+
 
     private Dictionary<string, AudioSource> audioDict;
     private Dictionary<string, AudioClip[]> sfxDict;
@@ -62,18 +58,13 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip[] buttonSfxList;
 
     [Header("Player SFX")]
-    [SerializeField] private AudioClip[] PlayerWalkSFX;
-    [SerializeField] private AudioClip[] PlayerRunSFX;
-    [SerializeField] private AudioClip[] PlayerJumpSFX;
-    [SerializeField] private AudioClip[] PlayerBreathingSFX;
+    [SerializeField] private AudioClip[] PlayerFootstepSFX;
     [SerializeField] private AudioClip[] PlayerInsanitySFX;
-    [SerializeField] private AudioClip[] PlayerHeartbeatSFX;
     [SerializeField] private AudioClip[] PlayerDieSFX;
 
     [Header("Spider SFX")]
-    [SerializeField] private AudioClip[] SpiderPatrolSFX;
-    [SerializeField] private AudioClip[] SpiderChaseSFX;
-    [SerializeField] private AudioClip[] SpiderSpotSFX;
+    [SerializeField] private AudioClip[] SpiderFootstepsSFX;
+    [SerializeField] private AudioClip[] SpiderIdleSFX;
     [SerializeField] private AudioClip[] SpiderAttackSFX;
 
     [Header("Lighting SFX")]
@@ -103,16 +94,12 @@ public class AudioManager : MonoBehaviour
 
     private void InitializeSFXDicts()
     {
-        PlayerSFX.Add(EPlayerSFX.Walk, PlayerWalkSFX);
-        PlayerSFX.Add(EPlayerSFX.Run, PlayerRunSFX);
-        PlayerSFX.Add(EPlayerSFX.Jump, PlayerJumpSFX);
-        PlayerSFX.Add(EPlayerSFX.Breathing, PlayerBreathingSFX);
+        PlayerSFX.Add(EPlayerSFX.Walk, PlayerFootstepSFX);
         PlayerSFX.Add(EPlayerSFX.Insanity, PlayerInsanitySFX);
         PlayerSFX.Add(EPlayerSFX.Die, PlayerDieSFX);
 
-        EnemySFX.Add(EEnemySFX.SpiderPatrol, SpiderPatrolSFX);
-        EnemySFX.Add(EEnemySFX.SpiderSpot, SpiderSpotSFX);
-        EnemySFX.Add(EEnemySFX.SpiderChase, SpiderChaseSFX);
+        EnemySFX.Add(EEnemySFX.SpiderFootstep, SpiderFootstepsSFX);
+        EnemySFX.Add(EEnemySFX.SpiderIdle, SpiderIdleSFX);
         EnemySFX.Add(EEnemySFX.SpiderAttack, SpiderAttackSFX);
 
         LightingSFX.Add(ELightingSFX.TorchIdle, TorchIdleSFX);
