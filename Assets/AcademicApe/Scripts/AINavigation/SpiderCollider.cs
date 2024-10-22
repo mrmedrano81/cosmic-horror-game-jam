@@ -16,12 +16,17 @@ public class NewBehaviourScript : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+   
+    private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Hit Something" + collision.gameObject.name);
-        if (collision.gameObject.CompareTag("Player"))
+        Debug.Log("Spider Hit Object" + other.gameObject.name);
+        if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Spider Hit Player");
+            //GameOverLogic
         }
     }
+    
+
+   
 }

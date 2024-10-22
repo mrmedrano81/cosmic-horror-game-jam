@@ -16,41 +16,58 @@ public class AttackState : AIStateMachine
 
     public override void EnterState(AiManager ai)
     {
-        ai.spiderAnim.CrossFadeInFixedTime("Armature_SpiderAttack_Anim", 0.1f);
+        ai.spiderAnim.Play("Spider_Armature|SpiderAttackFull_Anim");
         Debug.Log("Entering AttackState");
         ai.IsAttackState = true;
-        Debug.Log("AttackState = True");
+        Debug.Log("AttackState = True");    
         ai.Agent.speed = ai.attackMovementSpeed;
     }
 
     public override void UpdateState(AiManager ai)
     {
         Debug.Log("Entered Update of Attack");
-        distancetoPlayer = CheckDistancetoPlayer(ai, player);
         if (ai.sightDetection.CanSeePlayer(out Transform detectedPlayer))
         {
+            distancetoPlayer = CheckDistancetoPlayer(ai, player);
+            Vector3 directiontoPlayer = (detectedPlayer.position - ai.transform.position).normalized;
+            float stopDistance = 2f;
             if(distancetoPlayer > ai.minDistancetoAttackPlayer)
             {
                 Debug.Log("Moving to Attack Position");
-                ai.Agent.SetDestination(detectedPlayer.position);
-                //Put Collider code when collides = game over
-                ai.spiderAnim.Play("Armature_SpiderAttack_Anim");
-            }
-
-            else if (distancetoPlayer < ai.minDistancetoAttackPlayer)
-            {
-                Debug.Log("Attacking Player");
-                ai.Agent.speed = 0f;
+                ai.Agent.SetDestination(detectedPlayer.position - directiontoPlayer*stopDistance);
+                //ai.spiderAnim.Play("Armature_SpiderIdle_Anim");
                 pausetimer += Time.deltaTime;
-                if(pausetimer >= pauseduration)
+
+                if (pausetimer >= pauseduration)
                 {
+                    Debug.Log("Attacking Player");
+                    //ai.Agent.speed = 1f;
+                    //pausetimer += Time.deltaTime;
+                    ai.Agent.speed = 20f;
                     pausetimer = 0f;
-                    ai.Agent.speed = ai.attackMovementSpeed;
-                    ai.spiderAnim.Play("Armature_SpiderIdle_Anim");
+                    //ai.Agent.speed = ai.attackMovementSpeed;
                     ai.Agent.SetDestination(player.position);
                     Debug.Log("Lunging");
                 }
             }
+
+            /*if (distancetoPlayer < ai.minDistancetoAttackPlayer)
+            {
+                Debug.Log("Attacking Player");
+                //ai.Agent.speed = 1f;
+                pausetimer += Time.deltaTime;
+                if(pausetimer >= pauseduration)
+                {
+                    ai.Agent.speed = 20f;
+                    pausetimer = 0f;
+                    ai.Agent.autoBraking = false;
+                    //ai.Agent.speed = ai.attackMovementSpeed;
+                    ai.spiderAnim.Play("Armature_SpiderIdle_Anim");
+                    ai.Agent.SetDestination(player.position);
+                    Debug.Log("Lunging");
+                    ai.Agent.autoBraking = true;
+                }
+            } */
         }
 
         else if (!(ai.sightDetection.CanSeePlayer(out Transform player)))

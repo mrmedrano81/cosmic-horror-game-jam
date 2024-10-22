@@ -43,9 +43,6 @@ public class AiManager : MonoBehaviour
     [HideInInspector] public int chaseAreaMask;
 
 
-    //Handling AI Colliders
-    //public Collider spiderCollider;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -61,14 +58,6 @@ public class AiManager : MonoBehaviour
         chaseState = new ChaseState();
         attackState = new AttackState();
         IsAttackState = false;
-
-        /*/Handle Colliders
-        spiderCollider = GetComponent<Collider>();
-        if(spiderCollider == null)
-        {
-            Debug.Log("No Collider referenced");
-        }
-        */
 
 
         //Debug.Log("going to first patrol state");
@@ -151,16 +140,6 @@ public class AiManager : MonoBehaviour
 
         
     }
-
-    /*
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("Spider HIT Player");
-        }
-    }
-    */
 
     private WaypointDetection GetPlayerDetectedWaypoint()
     {
