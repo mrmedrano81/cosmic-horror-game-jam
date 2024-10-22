@@ -93,6 +93,6 @@ public class PlayerRunState : PlayerBaseState
 
     public override void UpdateState()
     {
-
+        _ctx._audioScript.PlayFootstepSounds(true);
     }
 }

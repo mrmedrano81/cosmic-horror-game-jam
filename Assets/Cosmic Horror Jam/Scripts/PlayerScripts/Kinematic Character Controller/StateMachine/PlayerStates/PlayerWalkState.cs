@@ -75,5 +75,6 @@ public class PlayerWalkState : PlayerBaseState
 
     public override void UpdateState()
     {
+        _ctx._audioScript.PlayFootstepSounds(false);
     }
 }

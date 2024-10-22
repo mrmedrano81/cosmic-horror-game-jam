@@ -578,7 +578,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2981960057846853534
 Transform:
   m_ObjectHideFlags: 0
@@ -689,7 +689,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slab_with_Keys
       objectReference: {fileID: 0}
+    - target: {fileID: 7329017804467817965, guid: d2ad62af5877c32488855094f6d6ee19, type: 3}
+      propertyPath: _interactionText
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7999253326853664344, guid: d2ad62af5877c32488855094f6d6ee19, type: 3}
+      propertyPath: _interactionText
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8575905310680462498, guid: d2ad62af5877c32488855094f6d6ee19, type: 3}
+      propertyPath: _interactionText
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9021444454478843336, guid: d2ad62af5877c32488855094f6d6ee19, type: 3}
       propertyPath: _interactionText
       value: 
       objectReference: {fileID: 0}
@@ -828,7 +840,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slab_with_Keys (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7329017804467817965, guid: d2ad62af5877c32488855094f6d6ee19, type: 3}
+      propertyPath: _interactionText
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7999253326853664344, guid: d2ad62af5877c32488855094f6d6ee19, type: 3}
+      propertyPath: _interactionText
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8575905310680462498, guid: d2ad62af5877c32488855094f6d6ee19, type: 3}
+      propertyPath: _interactionText
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9021444454478843336, guid: d2ad62af5877c32488855094f6d6ee19, type: 3}
       propertyPath: _interactionText
       value: 
       objectReference: {fileID: 0}

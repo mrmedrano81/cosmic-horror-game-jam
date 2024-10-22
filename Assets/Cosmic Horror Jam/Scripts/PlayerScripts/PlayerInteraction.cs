@@ -17,9 +17,11 @@ public class PlayerInteraction : MonoBehaviour
     [Header("[DEBUG]")]
     public PlayerInventory inventory;
     public FloatingText activeFloatingText;
+    public PlayerAudioScript playerAudio;
 
     private void Awake()
     {
+        playerAudio = GetComponentInParent<PlayerAudioScript>();
         interactionCollider = GetComponent<SphereCollider>();
     }
 
@@ -56,6 +58,15 @@ public class PlayerInteraction : MonoBehaviour
                     if (interactScript)
                     {
                         interactScript.CallInteract(this);  // Call the interaction on the object
+
+                        if (other.gameObject.CompareTag("Key"))
+                        {
+                            AudioManager.instance.PlaySFX(playerAudio.interactionSource, EOtherSFX.Interact);
+                        }
+                        else if (other.gameObject.CompareTag("Brazier"))
+                        {
+                            AudioManager.instance.PlaySFX(playerAudio.interactionSource, ELightingSFX.TorchLight);
+                        }
                         //Debug.Log("Interacted with " + other.gameObject.name);
                     }
                     else
@@ -83,7 +94,18 @@ public class PlayerInteraction : MonoBehaviour
 
                     if (interactScript)
                     {
+
+                        if (other.gameObject.CompareTag("Key"))
+                        {
+                            AudioManager.instance.PlaySFX(playerAudio.interactionSource, EOtherSFX.Interact);
+                        }
+                        else if (other.gameObject.CompareTag("Brazier"))
+                        {
+                            AudioManager.instance.PlaySFX(playerAudio.interactionSource, ELightingSFX.TorchLight);
+                        }
+
                         interactScript.CallInteract(this);  // Call the interaction
+
                         //Debug.Log("Interacted with " + other.gameObject.name);
                     }
                     else

@@ -9,6 +9,8 @@ TagManager:
   - Obstacles
   - Enemy
   - Torch
+  - Key
+  - Brazier
   layers:
   - Default
   - TransparentFX
