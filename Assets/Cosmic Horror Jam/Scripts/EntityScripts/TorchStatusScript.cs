@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TorchStatusScript : MonoBehaviour
@@ -16,11 +17,16 @@ public class TorchStatusScript : MonoBehaviour
 
     [Header("DEBUG")]
     public float currentValue;
+    [SerializeField] private AudioSource torchIdleAudio;
+    [SerializeField] private AudioSource torchLitAudio;
+    private bool _playedLitSound;
     
 
     // Start is called before the first frame update
     void Start()
     {
+        torchIdleAudio = GetComponent<AudioSource>();
+
         torchHigh.SetActive(true);
         torchMedium.SetActive(false);
         torchLow.SetActive(false);
@@ -34,6 +40,22 @@ public class TorchStatusScript : MonoBehaviour
         //currentValue = 0.0f;
 
         StartCoroutine("TorchDecay", tickRate);
+
+        AudioManager.instance.PlaySFX(torchIdleAudio, ELightingSFX.TorchIdle);
+    }
+
+    private void Update()
+    {
+        if (currentValue != maxValue)
+        {
+            _playedLitSound = false;
+        }
+
+        if (currentValue == maxValue && _playedLitSound)
+        {
+            AudioManager.instance.PlaySFX(torchIdleAudio, ELightingSFX.TorchLight);
+            _playedLitSound = false;
+        }
     }
 
     IEnumerator TorchDecay(float delay)
@@ -45,6 +67,8 @@ public class TorchStatusScript : MonoBehaviour
             if (currentValue > 0f)
             {
                 currentValue -= decayPerTick;
+
+                AudioManager.instance.PlaySFX(torchIdleAudio, ELightingSFX.TorchIdle);
             }
 
             currentValue = Mathf.Clamp(currentValue, 0, maxValue);
@@ -57,6 +81,8 @@ public class TorchStatusScript : MonoBehaviour
                     torchMedium.SetActive(false);
                     torchLow.SetActive(true);
                 }
+
+                torchIdleAudio.Stop();
             }
             else if (currentValue > 0 && currentValue < MediumThreshold)
             {
