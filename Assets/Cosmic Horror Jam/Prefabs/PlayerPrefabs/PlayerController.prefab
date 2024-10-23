@@ -670,6 +670,8 @@ MonoBehaviour:
   _currentSanity: 100
   _sanityGain: 1
   _sanityDecreaseTick: 0.1
+  _requiredZeroSanityDuration: 5
+  _respawnFromInsanity: 0
 --- !u!114 &6836363357383062990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -705,7 +707,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

@@ -69,7 +69,7 @@ public class GameStateManager : MonoBehaviour
 
         if (sanityMeter._respawnFromInsanity)
         {
-            RespawnPlayer();
+            RespawnFromInsanity();
             sanityMeter._respawnFromInsanity = false;
         }
 
@@ -94,7 +94,7 @@ public class GameStateManager : MonoBehaviour
         _elevator.SetActive(true);  // Activate the elevator after the delay
     }
 
-    public void RespawnPlayer()
+    public void RespawnFromInsanity()
     {
         player.Motor.SetPosition(spawnSpot.position);
 
