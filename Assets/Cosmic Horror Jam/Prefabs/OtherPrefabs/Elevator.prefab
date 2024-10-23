@@ -616,6 +616,7 @@ MonoBehaviour:
   door: {fileID: 1694110839482642436}
   y_doorTravelDistance: -4.86
   doorSpeed: 1
+  elevatorCloseDelay: 0
   _startClosingSequence: 0
 --- !u!1001 &2738514352359790800
 PrefabInstance:

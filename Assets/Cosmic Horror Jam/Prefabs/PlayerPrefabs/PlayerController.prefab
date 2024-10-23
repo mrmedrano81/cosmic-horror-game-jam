@@ -664,10 +664,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fov: {fileID: 0}
+  _audioScript: {fileID: 0}
   _maxSanity: 100
-  _sanityDecreaseRate: 1
+  _sanityDecreaseRate: 3.3
   _currentSanity: 100
   _sanityGain: 1
+  _sanityDecreaseTick: 0.1
 --- !u!114 &6836363357383062990
 MonoBehaviour:
   m_ObjectHideFlags: 0
