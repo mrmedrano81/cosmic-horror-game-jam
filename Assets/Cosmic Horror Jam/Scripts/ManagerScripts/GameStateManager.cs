@@ -12,17 +12,21 @@ public class GameStateManager : MonoBehaviour
 
     public int FPSCap;
     public float _timeScale;
+
+    public float elevatorDelay = 3f; // Delay time in seconds
     public bool isPaused;
 
     private PedestalScript _pedestalScript;
     private bool _playEndCutscene;
 
     public GameObject _elevator;
+    public GameObject _activatedSlab;
 
 
     void Awake()
     {
         _elevator.SetActive(false);
+        _activatedSlab.SetActive(false);
         _playEndCutscene = false;
         Application.targetFrameRate = FPSCap;
         _pedestalScript = FindObjectOfType<PedestalScript>();
@@ -37,6 +41,8 @@ public class GameStateManager : MonoBehaviour
         AudioManager.instance.PlayMusic(0);
     }
 
+
+
     private void Update()
     {
         if (!_playEndCutscene)
@@ -45,11 +51,11 @@ public class GameStateManager : MonoBehaviour
             {
                 Debug.Log("End");
                 _playEndCutscene = true;
-                _pedestalScript.gameObject.SetActive(false);
-                _elevator.SetActive(true);
+
+                // Start a coroutine to delay the elevator activation
+                StartCoroutine(ActivateElevatorWithDelay());
             }
         }
-        //Time.timeScale = _timeScale;
 
         if (isPaused)
         {
@@ -59,6 +65,15 @@ public class GameStateManager : MonoBehaviour
         {
             Time.timeScale = 1.0f;
         }
+    }
+
+    private IEnumerator ActivateElevatorWithDelay()
+    {
+        _pedestalScript.gameObject.SetActive(false);
+        _activatedSlab.SetActive(true);
+        yield return new WaitForSeconds(elevatorDelay);  // Wait for the specified delay
+        _activatedSlab.SetActive(false);
+        _elevator.SetActive(true);  // Activate the elevator after the delay
     }
 
     public void RespawnPlayer()

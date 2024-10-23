@@ -18,7 +18,6 @@ public class PedestalScript : MonoBehaviour
 
     private int _currentPlacementOrder;
 
-    // Start is called before the first frame update
     void Start()
     {
         _currentPlacementOrder = 0;

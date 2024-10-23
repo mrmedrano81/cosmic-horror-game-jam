@@ -401,6 +401,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: KeySlot
       objectReference: {fileID: 0}
+    - target: {fileID: 1795011453841628262, guid: 425bd7695831776449835619a630b417, type: 3}
+      propertyPath: keyEnum
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7233201114202655391, guid: 425bd7695831776449835619a630b417, type: 3}
       propertyPath: _interactionText
       value: 
@@ -689,6 +693,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8520591108379200729, guid: 8cd7b387bdaaaab4695a74133ae82cb2, type: 3}
+      propertyPath: keyEnum
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8806220587714974722, guid: 8cd7b387bdaaaab4695a74133ae82cb2, type: 3}
       propertyPath: m_Name
       value: RunePiece4
@@ -769,6 +777,10 @@ PrefabInstance:
     - target: {fileID: 6430512573432659812, guid: bbb575ebf64fc92498633b2fabd74b56, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7214246027540047857, guid: bbb575ebf64fc92498633b2fabd74b56, type: 3}
+      propertyPath: keyEnum
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8628489002508995791, guid: bbb575ebf64fc92498633b2fabd74b56, type: 3}
       propertyPath: m_Name

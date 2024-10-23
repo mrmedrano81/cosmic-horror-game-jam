@@ -156,7 +156,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4839220534129940991, guid: 481d443c5a699e24199f7b9450b85a34, type: 3}
       propertyPath: keyEnum
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6922823798930667233, guid: 481d443c5a699e24199f7b9450b85a34, type: 3}
       propertyPath: m_Mesh
@@ -241,9 +241,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bobbingSpeed: 1
-  bobbingHeight: 0.07
-  rotationSpeed: 5
-  maxRotationAngle: 20
+  bobbingHeight: 0.1
+  rotationSpeed: 7
+  maxRotationAngle: 30
 --- !u!1001 &3492578008030904202
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -258,7 +258,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4839220534129940991, guid: 481d443c5a699e24199f7b9450b85a34, type: 3}
       propertyPath: keyEnum
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5122878607436771054, guid: 481d443c5a699e24199f7b9450b85a34, type: 3}
       propertyPath: m_TagString
@@ -354,9 +354,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bobbingSpeed: 1
-  bobbingHeight: 0.07
-  rotationSpeed: 5
-  maxRotationAngle: 20
+  bobbingHeight: 0.1
+  rotationSpeed: 7
+  maxRotationAngle: 30
 --- !u!4 &6657381715519764225 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7790071030981691531, guid: 481d443c5a699e24199f7b9450b85a34, type: 3}
@@ -372,7 +372,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4839220534129940991, guid: 481d443c5a699e24199f7b9450b85a34, type: 3}
       propertyPath: keyEnum
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6922823798930667233, guid: 481d443c5a699e24199f7b9450b85a34, type: 3}
       propertyPath: m_Mesh
@@ -457,6 +457,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bobbingSpeed: 1
-  bobbingHeight: 0.07
-  rotationSpeed: 5
-  maxRotationAngle: 20
+  bobbingHeight: 0.1
+  rotationSpeed: 7
+  maxRotationAngle: 30

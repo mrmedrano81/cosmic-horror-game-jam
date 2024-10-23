@@ -15,7 +15,7 @@ public class SanityMeter : MonoBehaviour
     public float _sanityGain; //For Brazier Sanity Regen 
 
     private float _ticktimer;
-    private float _sanityDecreaseTick = 1f;
+    [SerializeField] private float _sanityDecreaseTick = 1f;
     private bool _IsEnemySeen = false;
 
     private void Awake()

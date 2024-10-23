@@ -12,6 +12,8 @@ public class ElevatorScript : MonoBehaviour
     public float y_doorTravelDistance = -4.86f;
     public float doorSpeed;
 
+    public float elevatorCloseDelay;
+
     private Vector3 topDestination;
     private Vector3 doorOpenDestination;
 
@@ -24,6 +26,10 @@ public class ElevatorScript : MonoBehaviour
 
     private ElevatorCloseScript _closeScript;
     private bool _doorClosed;
+
+    private float _currentTime;
+    private bool _isWaitingToClose;
+
 
     private void Awake()
     {
