@@ -29,6 +29,8 @@ public class KeyPlacement : MonoBehaviour
         _collider = GetComponent<SphereCollider>();
         _rb = GetComponent<Rigidbody>();
 
+        _collider.isTrigger = true;
+
         _keyMeshRenderer.enabled = false;
         _collider.enabled = true;
         _floatingText.enabled = true;
