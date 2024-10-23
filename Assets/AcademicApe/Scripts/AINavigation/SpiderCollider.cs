@@ -26,7 +26,7 @@ public class SpiderCollider : MonoBehaviour
         {
             Debug.Log("Spider Hit Player");
             //GameOverLogic
-            //_gamestateManager.GameOver();
+            _gamestateManager.GameOver();
         }
     }
     

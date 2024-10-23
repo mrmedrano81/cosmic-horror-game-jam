@@ -113,6 +113,7 @@ public class GameStateManager : MonoBehaviour
         isPaused = true;
         gameOverPanel.SetActive(true);
         Time.timeScale = 0f;
+        ReloadGame();
     }
 
     public void ReloadGame()
