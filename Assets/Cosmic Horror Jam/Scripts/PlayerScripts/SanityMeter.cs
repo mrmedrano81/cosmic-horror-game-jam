@@ -6,20 +6,24 @@ public class SanityMeter : MonoBehaviour
 {
     public FieldOfView _fov;
 
-    //
+    public PlayerAudioScript _audioScript;
 
-    [Header ("Sanity Parameters")] 
+    [Header("Sanity Parameters")]
     public float _maxSanity = 100f; //Sanity Cap
     public float _sanityDecreaseRate = 2f; //Sanity tick damage 
     public float _currentSanity; //Current Sanity 
     public float _sanityGain; //For Brazier Sanity Regen 
 
     private float _ticktimer;
-    private float _sanityDecreaseTick = 1f;
+    [SerializeField] private float _sanityDecreaseTick = 1f;
     private bool _IsEnemySeen = false;
+
+    private bool _playingSanitySound;
 
     private void Awake()
     {
+        _audioScript = FindObjectOfType<PlayerAudioScript>();
+        _playingSanitySound = false;
         _currentSanity = _maxSanity;
         _fov = GetComponent<FieldOfView>();
         _IsEnemySeen = false;

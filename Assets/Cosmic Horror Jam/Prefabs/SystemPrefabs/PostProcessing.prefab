@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9169743096544151053}
   - component: {fileID: 5387826505519275143}
+  - component: {fileID: 6148259315363865343}
   m_Layer: 8
   m_Name: PostProcessing
   m_TagString: Untagged
@@ -49,3 +50,27 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: 5572a553268f05444adcbf6e7a420e9e, type: 2}
+--- !u!114 &6148259315363865343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6560577203967903822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c2fb8bfde1bf9642a0bc8c610c56b43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  postProcessingVolume: {fileID: 5387826505519275143}
+  sanity: 1
+  lensDistortionMin: 0.6
+  lensDistortionMax: -0.1
+  vignetteIntensityMin: 0.25
+  vignetteIntensityMax: 0.2
+  vignetteSmoothnessMin: 1
+  vignetteSmoothnessMax: 0.3
+  chromaticAberrationMin: 1
+  chromaticAberrationMax: 0
+  colorFilterMin: {r: 1, g: 0, b: 0, a: 1}
+  colorFilterMax: {r: 1, g: 1, b: 1, a: 1}
