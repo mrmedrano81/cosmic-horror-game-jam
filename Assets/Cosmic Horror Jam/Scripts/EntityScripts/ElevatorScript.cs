@@ -1,3 +1,4 @@
+using KinematicCharacterController;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -23,7 +24,7 @@ public class ElevatorScript : MonoBehaviour
     private Vector3 doorOffset;
 
     [HideInInspector] public bool _startClosingSequence;
-
+    private PlayerScript playerScript;
     private ElevatorCloseScript _closeScript;
     private bool _doorClosed;
 
@@ -33,6 +34,7 @@ public class ElevatorScript : MonoBehaviour
 
     private void Awake()
     {
+        playerScript = FindObjectOfType<PlayerScript>();
         _closeScript = GetComponentInChildren<ElevatorCloseScript>();
     }
 
@@ -53,6 +55,7 @@ public class ElevatorScript : MonoBehaviour
         if (_closeScript._playerInElevator && !_startClosingSequence)
         {
             _startClosingSequence = true;
+            playerScript._disableMovement = true;
         }
 
         if (!_startClosingSequence)
@@ -87,6 +90,7 @@ public class ElevatorScript : MonoBehaviour
         else
         {
             _doorClosed = true;
+            playerScript._disableMovement = false;
         }
     }
 

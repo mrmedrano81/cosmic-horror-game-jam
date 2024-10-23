@@ -154,6 +154,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3045575989382028799}
     m_Modifications:
+    - target: {fileID: 2424841445690057183, guid: 481d443c5a699e24199f7b9450b85a34, type: 3}
+      propertyPath: m_text
+      value: '[E] ???'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2424841445690057183, guid: 481d443c5a699e24199f7b9450b85a34, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 193b39c5f9146124cb8135a37d7697b4, type: 2}
+    - target: {fileID: 2424841445690057183, guid: 481d443c5a699e24199f7b9450b85a34, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4839220534129940991, guid: 481d443c5a699e24199f7b9450b85a34, type: 3}
       propertyPath: keyEnum
       value: 2
@@ -254,6 +266,18 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1893462726248512775, guid: 481d443c5a699e24199f7b9450b85a34, type: 3}
       propertyPath: _usesRaycastInteraction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2424841445690057183, guid: 481d443c5a699e24199f7b9450b85a34, type: 3}
+      propertyPath: m_text
+      value: '[E] ???'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2424841445690057183, guid: 481d443c5a699e24199f7b9450b85a34, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 193b39c5f9146124cb8135a37d7697b4, type: 2}
+    - target: {fileID: 2424841445690057183, guid: 481d443c5a699e24199f7b9450b85a34, type: 3}
+      propertyPath: m_hasFontAssetChanged
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4839220534129940991, guid: 481d443c5a699e24199f7b9450b85a34, type: 3}
@@ -370,6 +394,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8374281152461145363}
     m_Modifications:
+    - target: {fileID: 2424841445690057183, guid: 481d443c5a699e24199f7b9450b85a34, type: 3}
+      propertyPath: m_text
+      value: '[E] ???'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2424841445690057183, guid: 481d443c5a699e24199f7b9450b85a34, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 193b39c5f9146124cb8135a37d7697b4, type: 2}
+    - target: {fileID: 2424841445690057183, guid: 481d443c5a699e24199f7b9450b85a34, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4839220534129940991, guid: 481d443c5a699e24199f7b9450b85a34, type: 3}
       propertyPath: keyEnum
       value: 1

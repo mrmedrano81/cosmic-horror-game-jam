@@ -31,9 +31,15 @@ namespace KinematicCharacterController
 
         private Vector3 defaultPlanerDirection;
 
+        [HideInInspector] public bool _endCutscene;
+        [HideInInspector] public bool _disableMovement;
+        [HideInInspector] private GameStateManager gameState;
+
         private void Awake()
         {
-            
+            gameState = FindObjectOfType<GameStateManager>();
+            _disableMovement = false;
+            _endCutscene = false;
         }
 
         private void Start()
@@ -64,33 +70,45 @@ namespace KinematicCharacterController
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (!_endCutscene)
             {
-                _openMenu = !_openMenu;
-            }
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    _openMenu = !_openMenu;
 
-            if (!_openMenu)
-            {
-                HandleCharacterInput();
+                }
+
+                if (!_openMenu)
+                {
+                    gameState.isPaused = false;
+                    HandleCharacterInput();
+                }
+                else if (_openMenu)
+                {
+                    gameState.isPaused = true;
+                }
             }
         }
 
         private void LateUpdate()
         {
-            // Handle rotating the camera along with physics movers
-            if (CharacterCamera.RotateWithPhysicsMover && Character.Motor.AttachedRigidbody != null)
+            if (!_endCutscene)
             {
-                if (Character.CurrentCharacterState == ECharacterState.Default)
+                if (!_openMenu)
                 {
-                    CharacterCamera.PlanarDirection = Character.Motor.AttachedRigidbody.GetComponent<PhysicsMover>().RotationDeltaFromInterpolation * CharacterCamera.PlanarDirection;
-                    CharacterCamera.PlanarDirection = Vector3.ProjectOnPlane(CharacterCamera.PlanarDirection, Character.Motor.CharacterUp).normalized;
-                    defaultPlanerDirection = CharacterCamera.PlanarDirection;
-                }
-            }
+                    // Handle rotating the camera along with physics movers
+                    if (CharacterCamera.RotateWithPhysicsMover && Character.Motor.AttachedRigidbody != null)
+                    {
+                        if (Character.CurrentCharacterState == ECharacterState.Default)
+                        {
+                            CharacterCamera.PlanarDirection = Character.Motor.AttachedRigidbody.GetComponent<PhysicsMover>().RotationDeltaFromInterpolation * CharacterCamera.PlanarDirection;
+                            CharacterCamera.PlanarDirection = Vector3.ProjectOnPlane(CharacterCamera.PlanarDirection, Character.Motor.CharacterUp).normalized;
+                            defaultPlanerDirection = CharacterCamera.PlanarDirection;
+                        }
+                    }
 
-            if (!_openMenu)
-            {
-                HandleCameraInput();
+                    HandleCameraInput();
+                }
             }
         }
 
@@ -101,6 +119,7 @@ namespace KinematicCharacterController
             float mouseLookAxisRight = Input.GetAxisRaw(MouseXInput);
 
             Vector3 lookInputVector = new Vector3(mouseLookAxisRight, mouseLookAxisUp, 0f);
+
 
             // Prevent moving the camera while the cursor isn't locked
             if (Cursor.lockState != CursorLockMode.Locked)
@@ -129,8 +148,12 @@ namespace KinematicCharacterController
             PlayerCharacterInputs characterInputs = new PlayerCharacterInputs();
 
             // Build the CharacterInputs struct
-            characterInputs.MoveAxisForward = _moveAction.ReadValue<Vector2>().y;
-            characterInputs.MoveAxisRight = _moveAction.ReadValue<Vector2>().x;
+
+            if (!_disableMovement)
+            {
+                characterInputs.MoveAxisForward = _moveAction.ReadValue<Vector2>().y;
+                characterInputs.MoveAxisRight = _moveAction.ReadValue<Vector2>().x;
+            }
 
             characterInputs.CameraRotation = CharacterCamera.Transform.rotation;
             characterInputs.SpaceBar = _jumpAction.ReadValue<float>() == 1;

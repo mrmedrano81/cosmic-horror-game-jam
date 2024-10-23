@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class GameStateManager : MonoBehaviour
 {
-    public PlayerKCC player;
+    public PlayerKCC playerKCC;
     public Transform spawnSpot;
     public KeyItemSpawner keyItemSpawner;
     private PlayerInventory playerInventory;
@@ -36,12 +36,13 @@ public class GameStateManager : MonoBehaviour
         _playEndCutscene = false;
         Application.targetFrameRate = FPSCap;
 
-        player = FindAnyObjectByType<PlayerKCC>();
+        playerKCC = FindAnyObjectByType<PlayerKCC>();
         _pedestalScript = FindObjectOfType<PedestalScript>();
         gameOverPanel.SetActive(false);
         keyItemSpawner = FindObjectOfType<KeyItemSpawner>();
         playerInventory = FindObjectOfType<PlayerInventory>();
         sanityMeter = FindObjectOfType<SanityMeter>();
+        
     }
 
     // Start is called before the first frame update
@@ -96,7 +97,7 @@ public class GameStateManager : MonoBehaviour
 
     public void RespawnFromInsanity()
     {
-        player.Motor.SetPosition(spawnSpot.position);
+        playerKCC.Motor.SetPosition(spawnSpot.position);
 
         foreach (EKeyItem keyItemEnum in playerInventory.GetHeldKeyItems())
         {
