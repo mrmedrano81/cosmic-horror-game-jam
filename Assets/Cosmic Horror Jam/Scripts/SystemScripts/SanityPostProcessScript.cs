@@ -60,7 +60,7 @@ public class SanityPostProcessing : MonoBehaviour
 
     void Update()
     {
-        //sanity = sanityMeter._currentSanity / sanityMeter._maxSanity;
+        sanity = sanityMeter._currentSanity / sanityMeter._maxSanity;
         // Clamp sanity between 0 and 1
         sanity = Mathf.Clamp01(sanity);
 

@@ -38,7 +38,7 @@ public class GameStateManager : MonoBehaviour
     void Start()
     {
         isPaused = false;
-        AudioManager.instance.PlayMusic(0);
+        AudioManager.instance.PlayMusic(0, 0.3f);
     }
 
 

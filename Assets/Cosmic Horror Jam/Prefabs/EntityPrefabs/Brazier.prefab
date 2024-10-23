@@ -677,8 +677,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sanityRecoveryRate: 5
-  _sanityRecoveryTickSpeed: 1
-  _sanityRecoveryInterval: 1
+  _sanityRecoveryTickSpeed: 0.5
+  _sanityRecoveryInterval: 0.5
   SAN: {fileID: 0}
   torch: {fileID: 0}
 --- !u!1 &7647771475538566412
