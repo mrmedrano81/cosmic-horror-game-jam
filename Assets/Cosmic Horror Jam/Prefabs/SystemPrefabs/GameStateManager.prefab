@@ -77,8 +77,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  spawnSpot: {fileID: 0}
+  spawnSpot: {fileID: 964164734921388657}
+  keyItemSpawner: {fileID: 0}
   FPSCap: 120
   _timeScale: 0
+  elevatorDelay: 3
   isPaused: 0
   _elevator: {fileID: 0}
+  _activatedSlab: {fileID: 0}
+  gameOverPanel: {fileID: 0}
+  restartDelay: 2

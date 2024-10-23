@@ -123,8 +123,8 @@ MonoBehaviour:
   _animator: {fileID: 4614858188824037308}
   _fov: {fileID: 0}
   _audioScript: {fileID: 0}
-  _walkingSpeed: 4
-  _runningSpeed: 10
+  _walkingSpeed: 3
+  _runningSpeed: 7
   _stableMovementSharpness: 15
   _orientationSharpness: 1000
   _orientationMethod: 0
@@ -132,8 +132,8 @@ MonoBehaviour:
   _runningCapsuleRadius: 0
   _runningCapsuleHeight: 0
   _runToStop: 0
-  _maxAirMovespeed: 8
-  _airAccelerationSpeed: 15
+  _maxAirMovespeed: 6
+  _airAccelerationSpeed: 10
   _drag: 0.3
   _dashSpeed: 0
   _movementAbilityRequested: 0
@@ -216,8 +216,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 323f38967951a1149bab62c64ecf432f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewRadius: 11.55
-  viewAngle: 80
+  viewRadius: 15
+  viewAngle: 86
   targetMask:
     serializedVersion: 2
     m_Bits: 128
@@ -670,6 +670,9 @@ MonoBehaviour:
   _currentSanity: 100
   _sanityGain: 1
   _sanityDecreaseTick: 0.1
+  _requiredZeroSanityDuration: 2
+  _respawnFromInsanity: 0
+  _triggerBlackoutFromSanity: 0
 --- !u!114 &6836363357383062990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -682,7 +685,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 323f38967951a1149bab62c64ecf432f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewRadius: 5
+  viewRadius: 10
   viewAngle: 90
   targetMask:
     serializedVersion: 2
@@ -705,7 +708,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

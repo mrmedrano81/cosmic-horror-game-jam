@@ -70,7 +70,7 @@ MonoBehaviour:
   pulseStrengthMax: 0.2
   pulseSpeedMin: 0
   pulseSpeedMax: 4
-  vignetteIntensityMin: 0.25
+  vignetteIntensityMin: 0.3
   vignetteIntensityMax: 0.2
   vignetteSmoothnessMin: 1
   vignetteSmoothnessMax: 0.3
@@ -80,3 +80,4 @@ MonoBehaviour:
   saturationMax: 0
   colorFilterMin: {r: 1, g: 0, b: 0, a: 1}
   colorFilterMax: {r: 1, g: 1, b: 1, a: 1}
+  fadeDuration: 2

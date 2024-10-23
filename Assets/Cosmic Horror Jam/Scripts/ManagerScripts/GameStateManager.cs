@@ -10,6 +10,7 @@ public class GameStateManager : MonoBehaviour
     public Transform spawnSpot;
     public KeyItemSpawner keyItemSpawner;
     private PlayerInventory playerInventory;
+    private SanityMeter sanityMeter;
 
     public int FPSCap;
     public float _timeScale;
@@ -34,17 +35,20 @@ public class GameStateManager : MonoBehaviour
         _activatedSlab.SetActive(false);
         _playEndCutscene = false;
         Application.targetFrameRate = FPSCap;
+
+        player = FindAnyObjectByType<PlayerKCC>();
         _pedestalScript = FindObjectOfType<PedestalScript>();
         gameOverPanel.SetActive(false);
         keyItemSpawner = FindObjectOfType<KeyItemSpawner>();
         playerInventory = FindObjectOfType<PlayerInventory>();
+        sanityMeter = FindObjectOfType<SanityMeter>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
         isPaused = false;
-        AudioManager.instance.PlayMusic(0, 0.3f);
+        AudioManager.instance.PlayMusic(0, 0.2f);
     }
 
 
@@ -62,6 +66,14 @@ public class GameStateManager : MonoBehaviour
                 StartCoroutine(ActivateElevatorWithDelay());
             }
         }
+
+        if (sanityMeter._respawnFromInsanity)
+        {
+            RespawnFromInsanity();
+            sanityMeter._respawnFromInsanity = false;
+        }
+
+
 
         if (isPaused)
         {
@@ -82,7 +94,7 @@ public class GameStateManager : MonoBehaviour
         _elevator.SetActive(true);  // Activate the elevator after the delay
     }
 
-    public void RespawnPlayer()
+    public void RespawnFromInsanity()
     {
         player.Motor.SetPosition(spawnSpot.position);
 
@@ -90,6 +102,8 @@ public class GameStateManager : MonoBehaviour
         {
             keyItemSpawner.ResetKeyPickup(keyItemEnum);
         }
+
+        sanityMeter._currentSanity = sanityMeter._maxSanity;
 
         playerInventory.ClearInventory();
     }
