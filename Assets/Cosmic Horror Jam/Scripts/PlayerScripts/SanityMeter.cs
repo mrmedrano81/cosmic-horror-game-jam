@@ -23,9 +23,11 @@ public class SanityMeter : MonoBehaviour
     private bool _hasReachedZeroSanityDuration = false;
 
     [HideInInspector] public bool _respawnFromInsanity;
+    [HideInInspector] public bool _triggerBlackoutFromSanity;
 
     private void Awake()
     {
+        _triggerBlackoutFromSanity = false;
         _respawnFromInsanity = false;
         _audioScript = FindObjectOfType<PlayerAudioScript>();
         _playSanitySound = false;
@@ -76,8 +78,8 @@ public class SanityMeter : MonoBehaviour
 
     public void AdjustSanitySoundVolume()
     {
-        float minVolume = 0.1f; // Volume at full sanity
-        float maxVolume = 1.0f; // Volume at zero sanity
+        float minVolume = 0.05f; // Volume at full sanity
+        float maxVolume = 0.8f; // Volume at zero sanity
 
         float sanityPercentage = _currentSanity / _maxSanity; // Normalize sanity to a range of 0 to 1
         float volume = Mathf.Lerp(maxVolume, minVolume, sanityPercentage); // Inverse lerp (lower sanity = higher volume)
@@ -132,7 +134,7 @@ public class SanityMeter : MonoBehaviour
         Debug.Log("Sanity has been 0 for the required duration!");
         // Trigger insanity or other effects here
 
-        _respawnFromInsanity = true;
+        _triggerBlackoutFromSanity = true;
     }
 
     public void CheckIfLookingAtSpider()

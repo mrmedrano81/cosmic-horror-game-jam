@@ -33,7 +33,7 @@ public class PlayerAudioScript : MonoBehaviour
         {
             if (Time.time - _currentFootstepTime > walkInterval)
             {
-                AudioManager.instance.PlaySFX(footstepSource, EPlayerSFX.Walk, 1, true);
+                AudioManager.instance.PlaySFX(footstepSource, EPlayerSFX.Walk, 0.7f, true);
                 _currentFootstepTime = Time.time;
             }
         }
