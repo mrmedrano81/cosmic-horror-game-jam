@@ -4,10 +4,9 @@ using UnityEngine;
 public class AttackState : AIStateMachine
 {
     private Transform player;
-    private float pauseduration = 0.3f;
+    private float pauseduration = 3f;
     private float pausetimer;
     public float distancetoPlayer;
-
     private bool lungedone = false;
 
     public void SetTarget (Transform targetplayer)
@@ -23,31 +22,46 @@ public class AttackState : AIStateMachine
         ai.IsAttackState = true;
         //Debug.Log("AttackState = True");    
         ai.Agent.speed = ai.attackMovementSpeed;
+
+        //Update State bools
+        ai.IsChaseState = false;
+        ai.IsPatrolState = false;
+        ai.IsSearchState = false;
+
+        lungedone = true;
     }
 
     public override void UpdateState(AiManager ai)
     {
-        lungedone = false;
         //Debug.Log("Entered Update of Attack");
         if (ai.sightDetection.CanSeePlayer(out Transform detectedPlayer))
         {
             distancetoPlayer = CheckDistancetoPlayer(ai, player);
             Vector3 directiontoPlayer = (detectedPlayer.position - ai.transform.position).normalized;
             float stopDistance = 2f;
-            if(distancetoPlayer > ai.minDistancetoAttackPlayer)
+            pausetimer += Time.deltaTime;
+
+            if (distancetoPlayer <= 20f)
+            {
+                ai.ChaseAttackStepsAudio();
+                Debug.Log("Playing Attack Audio");
+            }
+
+            if (distancetoPlayer > ai.minDistancetoAttackPlayer)
             {
                 //Debug.Log("Moving to Attack Position");
                 ai.Agent.SetDestination(detectedPlayer.position - directiontoPlayer*stopDistance);
                 ai.spiderAnim.Play("Armature|SpiderAttackJump_Anim");
-                pausetimer += Time.deltaTime;
 
                 if (pausetimer >= pauseduration)
                 {
-                    //ai.spiderAnim.Play("Armature|SpiderAttackFull_Anim");
+                    
+                   // ai.spiderAnim.Play("Armature|SpiderRun_Anim");
                     Debug.Log("Attacking Player");
+                    ai.LungeAttack();
                     //ai.Agent.speed = 1f;
                     //pausetimer += Time.deltaTime;
-                    ai.Agent.speed = 20f;
+                    //ai.Agent.speed = 20f;
                     pausetimer = 0f;
                     //ai.Agent.speed = ai.attackMovementSpeed;
                     //ai.Agent.SetDestination(player.position);
@@ -82,6 +96,7 @@ public class AttackState : AIStateMachine
             ai.IsAttackState = false;
             ai.SwitchState(new SearchState(lastpos));
         }
+
     }
 
     private  float CheckDistancetoPlayer( AiManager ai,Transform player)
@@ -89,4 +104,5 @@ public class AttackState : AIStateMachine
         float distancetoPlayer = Vector3.Distance(ai.transform.position, player.transform.position);
         return distancetoPlayer;
     }
+
 }

@@ -32,7 +32,7 @@ public class SanityMeter : MonoBehaviour
 
         if( _IsEnemySeen)
         {
-            Debug.Log("Sanity Taking Hits");
+            //Debug.Log("Sanity Taking Hits");
             _ticktimer += Time.deltaTime;
             if( _ticktimer > _sanityDecreaseTick)
             {
@@ -59,11 +59,11 @@ public class SanityMeter : MonoBehaviour
         _currentSanity -= _sanityDecreaseRate; //Apply Sanity Damage
         _currentSanity = Mathf.Max(0, _currentSanity); //Clamp to 0
 
-        Debug.Log($"Current Sanity: { _currentSanity}");
+       // Debug.Log($"Current Sanity: { _currentSanity}");
 
         if(_currentSanity <= 0)
             {
-                Debug.Log("Insanity Sets In");
+                //Debug.Log("Insanity Sets In");
                 //Respawn Logic
             }
     }

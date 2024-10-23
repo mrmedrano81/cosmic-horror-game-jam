@@ -26,12 +26,16 @@ public class SearchState : AIStateMachine
         searchDuration = 0f;
         totalRotation = 0f;
         searchTimer = 0f;
-     
-        //Debug.Log("Entering SearchState");
+
+        //Update State bools
+        ai.IsChaseState = false;
+        ai.IsPatrolState = false;
+        ai.IsSearchState = true;
     }
 
     public override void UpdateState(AiManager ai)
     {
+        ai.PatrolSearchStepsAudio();
         //when player seen
         Transform detecedPlayer;
         if (ai.sightDetection.CanSeePlayer(out detecedPlayer))

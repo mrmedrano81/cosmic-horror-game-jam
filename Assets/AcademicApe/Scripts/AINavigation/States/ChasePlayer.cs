@@ -20,6 +20,11 @@ public class ChaseState : AIStateMachine
         //ai.Agent.areaMask = ai.GetAreaMaskforChase();
         ai.Agent.areaMask = ai.chaseAreaMask;
         ai.Agent.speed = ai.chaseSpeed;
+
+        //Update State bools
+        ai.IsChaseState = true;
+        ai.IsPatrolState = false;
+        ai.IsSearchState = false;
     }
 
     // Update is called once per frame
@@ -33,6 +38,12 @@ public class ChaseState : AIStateMachine
             //Debug.Log("AI sees Player");
 
             RotateTowards(ai, player.position);
+
+            if(distancetoPlayer <= 20f)
+            {
+                ai.ChaseAttackStepsAudio();
+                Debug.Log("Playing Chase Audio");
+            }
 
             if (distancetoPlayer > ai.minDistancetoPlayer)
             {

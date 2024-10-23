@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -30,7 +31,25 @@ public class AiManager : MonoBehaviour
     public PatrolState patrolState;
     public ChaseState chaseState;
     private AttackState attackState;
-    [HideInInspector] public bool IsAttackState = false;
+
+    [Header("AI Current State")]
+    public bool IsPatrolState = false;
+    public bool IsChaseState = false;
+    public bool IsAttackState = false;
+    public bool IsSearchState = false;
+
+
+    [Header("Spider Step Interval")]
+    public float chaseInterval;
+    public float walkInterval;
+    public float attackInterval;
+    private float currentstepTime;
+
+    public AudioSource footsteps;
+    public AudioSource patrolchasesteps;
+    public AudioSource lunge;
+    public AudioSource idle;
+
 
 
     //handling navmesharea
@@ -63,6 +82,8 @@ public class AiManager : MonoBehaviour
         //Debug.Log("going to first patrol state");
         currentState = patrolState;
         currentState.EnterState(this);
+
+        StartCoroutine(TriggerIdleSoundRandomly());
     }
 
     // Update is called once per frame
@@ -152,4 +173,66 @@ public class AiManager : MonoBehaviour
     }
 
 
+    public void ChaseAttackStepsAudio()
+    {
+        if (IsChaseState)
+        {
+            if (Time.time - currentstepTime > chaseInterval)
+            {
+                AudioManager.instance.PlaySFX(footsteps, EEnemySFX.SpiderFootstep, 0.7f, true);
+                currentstepTime = Time.time;
+            }
+        }
+
+        else if (IsAttackState)
+        {
+            if (Time.time - currentstepTime >attackInterval)
+            {
+                AudioManager.instance.PlaySFX(footsteps, EEnemySFX.SpiderFootstep, 0.7f, true);
+                currentstepTime = Time.time;
+            }
+        }
+
+    }
+
+    public void LungeAttack()
+    {
+        AudioManager.instance.PlaySFX(lunge, EEnemySFX.SpiderAttack, 1f,false);
+    }
+
+    public void PatrolSearchStepsAudio()
+    {
+        if (IsPatrolState)
+        {
+            if (Time.time - currentstepTime > walkInterval)
+            {
+                AudioManager.instance.PlaySFX(patrolchasesteps, EEnemySFX.SpiderFootstep, 0.5f, true);
+                currentstepTime = Time.time;
+            }
+        }
+        if (IsSearchState)
+        {
+            if (Time.time - currentstepTime > walkInterval)
+            {
+                AudioManager.instance.PlaySFX(patrolchasesteps, EEnemySFX.SpiderFootstep, 0.5f, true);
+                currentstepTime = Time.time;
+            }
+        }
+    }
+
+
+    private IEnumerator TriggerIdleSoundRandomly()
+    {
+        while (true)
+        {
+            float waitime = Random.Range(5f, 15f);
+            yield return new WaitForSeconds(waitime);
+
+            IdleSound();
+        }
+    }
+    private void IdleSound()
+    {
+        AudioManager.instance.PlaySFX(idle, EEnemySFX.SpiderIdle, 0.7f, false);
+    }
 }
