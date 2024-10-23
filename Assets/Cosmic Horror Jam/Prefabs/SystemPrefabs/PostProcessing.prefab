@@ -66,11 +66,17 @@ MonoBehaviour:
   sanity: 1
   lensDistortionMin: 0.6
   lensDistortionMax: -0.1
+  pulseStrengthMin: 0
+  pulseStrengthMax: 0.2
+  pulseSpeedMin: 0
+  pulseSpeedMax: 4
   vignetteIntensityMin: 0.25
   vignetteIntensityMax: 0.2
   vignetteSmoothnessMin: 1
   vignetteSmoothnessMax: 0.3
   chromaticAberrationMin: 1
   chromaticAberrationMax: 0
+  saturationMin: -70
+  saturationMax: 0
   colorFilterMin: {r: 1, g: 0, b: 0, a: 1}
   colorFilterMax: {r: 1, g: 1, b: 1, a: 1}
