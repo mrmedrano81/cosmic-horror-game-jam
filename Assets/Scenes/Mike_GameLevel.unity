@@ -1283,6 +1283,11 @@ RectTransform:
   m_AnchoredPosition: {x: 50, y: 50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!4 &865090887 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 964164734921388657, guid: 9d3832a78c0b44a41b92b27e132accbb, type: 3}
+  m_PrefabInstance: {fileID: 1458843981311160869}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &867846032
 GameObject:
   m_ObjectHideFlags: 0
@@ -3296,6 +3301,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1448003466}
     - target: {fileID: 5821364396801732778, guid: 9d3832a78c0b44a41b92b27e132accbb, type: 3}
+      propertyPath: spawnSpot
+      value: 
+      objectReference: {fileID: 865090887}
+    - target: {fileID: 5821364396801732778, guid: 9d3832a78c0b44a41b92b27e132accbb, type: 3}
       propertyPath: gameOverPanel
       value: 
       objectReference: {fileID: 790075520}
@@ -3719,6 +3728,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 155096703663133092, guid: f8a61fabbac06094ebc77549ca846970, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 577098414691691314, guid: f8a61fabbac06094ebc77549ca846970, type: 3}
       propertyPath: m_Name
       value: PlayerController
