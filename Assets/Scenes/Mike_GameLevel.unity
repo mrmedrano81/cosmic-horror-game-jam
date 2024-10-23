@@ -1562,9 +1562,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7070989677635315954, guid: 7697861017e747d478b43a1e9c05a3e7, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: c62d14c265336cf499fc933a47ce57a9, type: 3}
     - target: {fileID: 7707549486804493129, guid: 7697861017e747d478b43a1e9c05a3e7, type: 3}
       propertyPath: m_Name
       value: Spider 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8751830128475959188, guid: 7697861017e747d478b43a1e9c05a3e7, type: 3}
+      propertyPath: IsChaseState
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8751830128475959188, guid: 7697861017e747d478b43a1e9c05a3e7, type: 3}
       propertyPath: Waypoints.Array.data[0]
