@@ -74,10 +74,9 @@ namespace KinematicCharacterController
         {
             if (!_endCutscene)
             {
-                if (Input.GetKeyDown(KeyCode.Escape))
+                if (Input.GetKeyDown(KeyCode.P))
                 {
                     _openMenu = !_openMenu;
-
                 }
 
                 if (!_openMenu)
