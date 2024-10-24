@@ -13,6 +13,7 @@ public class GameStateManager : MonoBehaviour
     private SanityMeter sanityMeter;
     private ElevatorScript elevatorScript;
     private PlayerAudioScript playerAudio;
+    private PlayerScript playerScript;
 
     public int FPSCap;
     public float _timeScale;
@@ -46,7 +47,7 @@ public class GameStateManager : MonoBehaviour
         sanityMeter = FindObjectOfType<SanityMeter>();
         elevatorScript = FindObjectOfType<ElevatorScript>();
         playerAudio = FindObjectOfType<PlayerAudioScript>();
-        
+        playerScript = FindObjectOfType<PlayerScript>();
     }
 
     // Start is called before the first frame update
@@ -133,6 +134,9 @@ public class GameStateManager : MonoBehaviour
         //Time.timeScale = 0f;
         // Start a coroutine to reload the game after a delay
 
+        playerScript._disableMovement = true;
+        playerScript._disableRotation = true;
+
         AudioManager.instance.PlaySFX(playerAudio.interactionSource, EPlayerSFX.Die, 0.2f);
         
         StartCoroutine(ReloadGameAfterDelay());
@@ -142,6 +146,9 @@ public class GameStateManager : MonoBehaviour
     {
         // Wait for the specified delay (restartDelay)
         yield return new WaitForSecondsRealtime(restartDelay);
+
+        playerScript._disableMovement = false;
+        playerScript._disableRotation = false;
 
         // After the delay, reload the game
         ReloadGame();

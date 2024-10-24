@@ -33,11 +33,13 @@ namespace KinematicCharacterController
 
         [HideInInspector] public bool _endCutscene;
         [HideInInspector] public bool _disableMovement;
+        [HideInInspector] public bool _disableRotation;
         [HideInInspector] private GameStateManager gameState;
         [HideInInspector] public float _mouseSensitivity;
 
         private void Awake()
         {
+            _disableRotation = false;
             gameState = FindObjectOfType<GameStateManager>();
             _disableMovement = false;
             _endCutscene = false;
@@ -122,10 +124,16 @@ namespace KinematicCharacterController
         private void HandleCameraInput()
         {
             // Create the look input vector for the camera
-            float mouseLookAxisUp = Input.GetAxisRaw(MouseYInput) * _mouseSensitivity;
-            float mouseLookAxisRight = Input.GetAxisRaw(MouseXInput) * _mouseSensitivity;
 
-            Vector3 lookInputVector = new Vector3(mouseLookAxisRight, mouseLookAxisUp, 0f);
+            Vector3 lookInputVector = Vector3.up;
+
+            if (!_disableRotation)
+            {
+                float mouseLookAxisUp = Input.GetAxisRaw(MouseYInput) * _mouseSensitivity;
+                float mouseLookAxisRight = Input.GetAxisRaw(MouseXInput) * _mouseSensitivity;
+
+                lookInputVector = new Vector3(mouseLookAxisRight, mouseLookAxisUp, 0f);
+            }
 
 
             // Prevent moving the camera while the cursor isn't locked

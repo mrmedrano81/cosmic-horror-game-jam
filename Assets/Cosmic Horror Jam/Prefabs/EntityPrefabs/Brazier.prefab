@@ -86,14 +86,14 @@ MonoBehaviour:
   thirdLayerLight: {fileID: 7554292318555455211}
   innerMinIntensity: 14
   innerMaxIntensity: 17
-  secondMinIntensity: 16
-  secondMaxIntensity: 25
+  secondMinIntensity: 20
+  secondMaxIntensity: 30
   thirdMinIntensity: 4
   thirdMaxIntensity: 8
   innerMinRange: 8
   innerMaxRange: 9
-  secondMinRange: 15
-  secondMaxRange: 25
+  secondMinRange: 20
+  secondMaxRange: 30
   thirdMinRange: 30
   thirdMaxRange: 50
   flickerSpeed: 4
@@ -791,7 +791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e2b772867444147b7054db0d77a35b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sanityRecoveryRate: 8
+  _sanityRecoveryRate: 10
   _sanityRecoveryTickSpeed: 0.5
   _sanityRecoveryInterval: 0.5
   SAN: {fileID: 0}

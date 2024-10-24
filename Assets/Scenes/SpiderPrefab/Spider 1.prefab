@@ -507,8 +507,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb29d6e84d66eb418c479f921d98d27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewDistance: 12
-  viewAngle: 160
+  viewDistance: 12.5
+  viewAngle: 100
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -530,12 +530,12 @@ MonoBehaviour:
   waypointTolerance: 1
   currentwaypointIndex: 0
   patrolSpeed: 3
-  chaseSpeed: 7
+  chaseSpeed: 6
   attackMovementSpeed: 10
   minDistancetoPlayer: 10
   minDistancetoAttackPlayer: 5
   attackTrigger: 1
-  aiRotationSpeed: 5
+  aiRotationSpeed: 10
   timeinsight: 0
   Agent: {fileID: 0}
   sightDetection: {fileID: 7468217073471683530}
