@@ -80,7 +80,7 @@ public class RecoveryZone : MonoBehaviour
         SAN._currentSanity += _sanityRecoveryRate;
         SAN._currentSanity = Mathf.Min(SAN._currentSanity, 100);
 
-        Debug.Log($"Current Sanity: {SAN._currentSanity}");
+        //Debug.Log($"Current Sanity: {SAN._currentSanity}");
 
         yield return new WaitForSeconds(_sanityRecoveryInterval);
     }
@@ -90,7 +90,7 @@ public class RecoveryZone : MonoBehaviour
         SAN._currentSanity += _sanityRecoveryRate;
         SAN._currentSanity = Mathf.Min(SAN._currentSanity, 100);
 
-        Debug.Log($"Current Sanity: {SAN._currentSanity}");
+        //Debug.Log($"Current Sanity: {SAN._currentSanity}");
 
         yield return new WaitForSeconds(_sanityRecoveryInterval);
     }

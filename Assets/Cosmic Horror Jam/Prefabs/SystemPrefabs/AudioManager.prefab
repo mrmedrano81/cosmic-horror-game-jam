@@ -41,7 +41,7 @@ AudioSource:
   m_GameObject: {fileID: 2110317702749497385}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 7573478752581135305, guid: e8f1e522ad0ae284586f14624b9677bd, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0
@@ -138,7 +138,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5800299563016150762}
   m_Layer: 0
-  m_Name: ExternalAudioSources
+  m_Name: Mixer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

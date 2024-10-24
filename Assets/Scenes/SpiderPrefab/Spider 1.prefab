@@ -41,7 +41,7 @@ AudioSource:
   m_GameObject: {fileID: 449245462387021987}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -8451504925130861572, guid: e8f1e522ad0ae284586f14624b9677bd, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -169,7 +169,7 @@ AudioSource:
   m_GameObject: {fileID: 3479935174242205706}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -8451504925130861572, guid: e8f1e522ad0ae284586f14624b9677bd, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -332,7 +332,7 @@ AudioSource:
   m_GameObject: {fileID: 6576397095637637976}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -8451504925130861572, guid: e8f1e522ad0ae284586f14624b9677bd, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -689,7 +689,7 @@ AudioSource:
   m_GameObject: {fileID: 8086237411981130558}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -8451504925130861572, guid: e8f1e522ad0ae284586f14624b9677bd, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -836,6 +836,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4375760673460520386, guid: c62d14c265336cf499fc933a47ce57a9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 92360ea798ffbb64caeb185b3b77835c, type: 2}
+    - target: {fileID: -4375760673460520386, guid: c62d14c265336cf499fc933a47ce57a9, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 524ab7ca1786ebc428d1d8a6130c0689, type: 2}
+    - target: {fileID: -4375760673460520386, guid: c62d14c265336cf499fc933a47ce57a9, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: af92aec843d354247927caf169477e6c, type: 2}
     - target: {fileID: 919132149155446097, guid: c62d14c265336cf499fc933a47ce57a9, type: 3}
       propertyPath: m_Name
       value: EldrichHorror_Monster_All_Animations_V6(NormalsFixed)

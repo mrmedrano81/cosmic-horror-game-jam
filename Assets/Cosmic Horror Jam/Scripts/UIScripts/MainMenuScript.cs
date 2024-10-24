@@ -16,11 +16,18 @@ public class MainMenuScript : MonoBehaviour
         _optionsMenuScreen.SetActive(false);
     }
 
+    private void Start()
+    {
+        AudioManager.instance.PlayMusic(2);
+    }
+
     // Update is called once per frame
     void Update()
     {
         
     }
+
+
 
     public void PlayGame()
     {

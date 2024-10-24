@@ -453,7 +453,7 @@ PrefabInstance:
       objectReference: {fileID: 6983815409147015436, guid: 193b39c5f9146124cb8135a37d7697b4, type: 2}
     - target: {fileID: 5674400735776541308, guid: 645653546ab312d4e86f91bf4b85bbb9, type: 3}
       propertyPath: m_characterSpacing
-      value: 6.54
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7017045419331731607, guid: 645653546ab312d4e86f91bf4b85bbb9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -580,7 +580,7 @@ PrefabInstance:
       objectReference: {fileID: 6983815409147015436, guid: 193b39c5f9146124cb8135a37d7697b4, type: 2}
     - target: {fileID: 5674400735776541308, guid: 645653546ab312d4e86f91bf4b85bbb9, type: 3}
       propertyPath: m_characterSpacing
-      value: 6.54
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7017045419331731607, guid: 645653546ab312d4e86f91bf4b85bbb9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1097,7 +1097,7 @@ PrefabInstance:
       objectReference: {fileID: 6983815409147015436, guid: 193b39c5f9146124cb8135a37d7697b4, type: 2}
     - target: {fileID: 5674400735776541308, guid: 645653546ab312d4e86f91bf4b85bbb9, type: 3}
       propertyPath: m_characterSpacing
-      value: 6.54
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7017045419331731607, guid: 645653546ab312d4e86f91bf4b85bbb9, type: 3}
       propertyPath: m_LocalPosition.x

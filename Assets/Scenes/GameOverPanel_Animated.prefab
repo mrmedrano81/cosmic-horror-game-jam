@@ -223,12 +223,12 @@ GameObject:
   - component: {fileID: 8118576193515352796}
   - component: {fileID: 5471199285354176676}
   m_Layer: 5
-  m_Name: GameOverPanel
+  m_Name: GameOverPanel_Animated
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4111697886293792849
 RectTransform:
   m_ObjectHideFlags: 0
