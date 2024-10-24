@@ -14,8 +14,11 @@ public class BrazierScript : MonoBehaviour
     public bool _lit;
     public bool _facedPlayer;
 
+    private AudioSource _audioSource;
+
     private void Awake()
     {
+        _audioSource = GetComponent<AudioSource>();
         _brazierFire.SetActive(false);
 
         _lit = false;
@@ -64,6 +67,8 @@ public class BrazierScript : MonoBehaviour
         _floatingText.enabled = false;
         _floatingText._interactionText.SetActive(false);
         _sanityTriggerZone.SetActive(true);
+
+        AudioManager.instance.PlaySFX(_audioSource, ELightingSFX.BrazierIdle, 1);
 
         gameObject.SetActive(false);
     }
