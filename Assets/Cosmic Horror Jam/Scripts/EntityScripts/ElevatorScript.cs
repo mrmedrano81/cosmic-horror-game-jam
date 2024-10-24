@@ -26,7 +26,7 @@ public class ElevatorScript : MonoBehaviour
     [HideInInspector] public bool _startClosingSequence;
     private PlayerScript playerScript;
     private ElevatorCloseScript _closeScript;
-    private bool _doorClosed;
+    [HideInInspector] public bool _doorClosed;
 
     private float _currentTime;
     private bool _isWaitingToClose;

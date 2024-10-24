@@ -41,8 +41,12 @@ public class CutsceneManager : MonoBehaviour
     private bool isPaused = false;
     private bool isFadingIn = false;
     private bool nextscene = false;
+
+    private bool _playedMusic;
     void Start()
     {
+        _playedMusic = false;
+
         // Store the initial position of the camera
         initialPosition = elevatorCamera.transform.localPosition;
 
@@ -73,6 +77,12 @@ public class CutsceneManager : MonoBehaviour
         }
         else if (isZoomingOut)
         {
+            if (!_playedMusic)
+            {
+                AudioManager.instance.PlayMusic(1);
+                _playedMusic = true;
+            }
+
             ZoomOut();
         }
         else if (isPaused)

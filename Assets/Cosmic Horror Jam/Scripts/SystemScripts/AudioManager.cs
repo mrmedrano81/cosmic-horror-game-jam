@@ -40,6 +40,7 @@ public class AudioManager : MonoBehaviour
 
     [Header("General Audio Sources")]
     [SerializeField] private AudioSource musicSource;
+    [SerializeField] private AudioSource musicNonLoopSource;
     [SerializeField] private AudioSource UIAudioSource;
 
 
@@ -110,11 +111,20 @@ public class AudioManager : MonoBehaviour
         OtherSFX.Add(EOtherSFX.Interact, InteractSFX);
     }
 
-    public void PlayMusic(int musicNumber, float volume = 1)
+    public void PlayMusic(int musicNumber, float volume = 1, bool loop = true)
     {
-        musicSource.clip = musicList[musicNumber];
-        musicSource.volume = volume;
-        musicSource.Play();
+        if (loop)
+        {
+            musicSource.clip = musicList[musicNumber];
+            musicSource.volume = volume;
+            musicSource.Play();
+        }
+        else
+        {
+            musicNonLoopSource.clip = musicList[musicNumber];
+            musicNonLoopSource.volume = volume;
+            musicNonLoopSource.Play();
+        }
     }
 
     public void PlayButtonSFX(int buttonNumber, float volume = 1)
