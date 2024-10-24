@@ -131,7 +131,7 @@ public class SanityMeter : MonoBehaviour
     // This method gets called when sanity has been 0 for the required duration
     private void OnZeroSanityDurationReached()
     {
-        Debug.Log("Sanity has been 0 for the required duration!");
+        //Debug.Log("Sanity has been 0 for the required duration!");
         // Trigger insanity or other effects here
 
         _triggerBlackoutFromSanity = true;

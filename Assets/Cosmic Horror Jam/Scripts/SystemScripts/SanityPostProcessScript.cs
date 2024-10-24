@@ -119,7 +119,7 @@ public class SanityPostProcessing : MonoBehaviour
             colorAdjustments.postExposure.value = Mathf.Lerp(colorAdjustments.postExposure.value, -10f, fadeProgress); // Lower exposure for black screen effect
         }
 
-        Debug.Log("Fade Progress: " + colorAdjustments.postExposure.value);
+        //Debug.Log("Fade Progress: " + colorAdjustments.postExposure.value);
         // If the fade is complete
         if (colorAdjustments.postExposure.value <= -7f && sanityMeter._triggerBlackoutFromSanity)
         {
