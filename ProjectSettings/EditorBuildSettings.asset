@@ -12,4 +12,5 @@ EditorBuildSettings:
     path: Assets/Scenes/Mike_GameLevel.unity
     guid: 663414fc3e1be3b448fd245cd61da54c
   m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: d9fd7fcc82b743b4f9b99b4eeb32f239, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: f7e65d5928c125346b6f331f2b1aac1b, type: 3}

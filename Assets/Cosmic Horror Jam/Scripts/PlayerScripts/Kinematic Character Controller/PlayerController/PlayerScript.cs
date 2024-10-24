@@ -82,10 +82,16 @@ namespace KinematicCharacterController
                 {
                     gameState.isPaused = false;
                     HandleCharacterInput();
+
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
                 }
                 else if (_openMenu)
                 {
                     gameState.isPaused = true;
+
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
                 }
             }
         }
