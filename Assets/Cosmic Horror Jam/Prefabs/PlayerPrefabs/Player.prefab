@@ -48,6 +48,9 @@ MonoBehaviour:
   Character: {fileID: 0}
   PlayerInteraction: {fileID: 0}
   CharacterCamera: {fileID: 0}
+  _endCutscene: 0
+  _disableMovement: 0
+  _mouseSensitivity: 0
 --- !u!114 &2044657265285797066
 MonoBehaviour:
   m_ObjectHideFlags: 0
