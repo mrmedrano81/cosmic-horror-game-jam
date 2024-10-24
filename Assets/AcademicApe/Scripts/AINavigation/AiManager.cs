@@ -225,7 +225,7 @@ public class AiManager : MonoBehaviour
     {
         while (true)
         {
-            float waitime = Random.Range(5f, 15f);
+            float waitime = Random.Range(15f, 30f);
             yield return new WaitForSeconds(waitime);
 
             IdleSound();

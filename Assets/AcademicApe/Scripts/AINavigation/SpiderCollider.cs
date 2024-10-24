@@ -24,7 +24,7 @@ public class SpiderCollider : MonoBehaviour
         //Debug.Log("Spider Hit Object" + other.gameObject.name);
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Spider Hit Player");
+            //Debug.Log("Spider Hit Player");
             //GameOverLogic
             _gamestateManager.GameOver();
         }
