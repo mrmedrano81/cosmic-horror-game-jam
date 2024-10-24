@@ -22,11 +22,11 @@ public class RecoveryZone : MonoBehaviour
         {
             PlayerKCC player = other.gameObject.GetComponent<PlayerKCC>();
             SAN = other.gameObject.GetComponentInChildren<SanityMeter>();
-            Debug.Log("Player in Safe Zone");
+            //Debug.Log("Player in Safe Zone");
 
             if (SAN != null)
             {
-                Debug.Log("Recovering SAN");
+                //Debug.Log("Recovering SAN");
                 _sanityRecoveryTimer += Time.deltaTime;
                 if (_sanityRecoveryTimer > _sanityRecoveryTickSpeed)
                 {
@@ -56,7 +56,7 @@ public class RecoveryZone : MonoBehaviour
             //player = null;
             SAN = null;
             //Left Recovery Zone
-            Debug.Log("player left safe zone");
+            //Debug.Log("player left safe zone");
         }
     }
 
@@ -80,7 +80,7 @@ public class RecoveryZone : MonoBehaviour
         SAN._currentSanity += _sanityRecoveryRate;
         SAN._currentSanity = Mathf.Min(SAN._currentSanity, 100);
 
-        Debug.Log($"Current Sanity: {SAN._currentSanity}");
+        //Debug.Log($"Current Sanity: {SAN._currentSanity}");
 
         yield return new WaitForSeconds(_sanityRecoveryInterval);
     }
@@ -90,7 +90,7 @@ public class RecoveryZone : MonoBehaviour
         SAN._currentSanity += _sanityRecoveryRate;
         SAN._currentSanity = Mathf.Min(SAN._currentSanity, 100);
 
-        Debug.Log($"Current Sanity: {SAN._currentSanity}");
+        //Debug.Log($"Current Sanity: {SAN._currentSanity}");
 
         yield return new WaitForSeconds(_sanityRecoveryInterval);
     }

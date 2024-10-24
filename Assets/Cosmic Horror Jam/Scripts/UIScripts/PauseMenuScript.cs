@@ -5,6 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenuScript : MonoBehaviour
 {
+    public GameObject mainPauseMenu;
+    public GameObject optionsPauseMenu;
+
+    private void OnEnable()
+    {
+        mainPauseMenu.SetActive(true);
+        optionsPauseMenu.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
+        mainPauseMenu.SetActive(true);
+        optionsPauseMenu.SetActive(false);
+    }
+
     // Start is called before the first frame update
     void Start()
     {

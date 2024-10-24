@@ -60,7 +60,7 @@ public class GameStateManager : MonoBehaviour
         {
             if (_pedestalScript.PedestalIsUnlocked())
             {
-                Debug.Log("End");
+                //Debug.Log("End");
                 _playEndCutscene = true;
 
                 // Start a coroutine to delay the elevator activation
