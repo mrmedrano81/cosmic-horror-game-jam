@@ -3,19 +3,20 @@ using Cinemachine;
 
 public class CutsceneController : MonoBehaviour
 {
-    [Header("References")]
-    public CinemachineVirtualCamera virtualCamera; // Assign in the Inspector
+    [Header("Cameras")]
+    public Camera mainCamera; // Assign the default Unity Main Camera
+    public CinemachineVirtualCamera cutsceneCamera; // Assign your cutscene Cinemachine camera
 
     [Header("Move Down Settings")]
-    public float moveDownSpeed = 5f; // Speed of downward movement
-    public float moveDownDuration = 3f; // Duration of the downward movement
+    public float moveDownSpeed = 5f;
+    public float moveDownDuration = 3f;
 
     [Header("Zoom Out Settings")]
-    public float zoomOutSpeed = 10f; // Speed of zoom out
-    public float zoomOutDuration = 2f; // Duration of zoom-out effect
+    public float zoomOutSpeed = 10f;
+    public float zoomOutDuration = 2f;
 
     [Header("Pause Settings")]
-    public float pauseDuration = 2f; // How long the camera stays still after the zoom out
+    public float pauseDuration = 2f;
 
     private float moveTimer = 0f;
     private float zoomTimer = 0f;
@@ -30,9 +31,12 @@ public class CutsceneController : MonoBehaviour
 
     void Start()
     {
-        // Store the initial position and field of view (FOV)
-        initialPosition = virtualCamera.transform.position;
-        initialZoom = virtualCamera.m_Lens.FieldOfView;
+        initialPosition = cutsceneCamera.transform.position;
+        initialZoom = cutsceneCamera.m_Lens.FieldOfView;
+
+        // Ensure the main camera starts active and cutscene camera is inactive
+        mainCamera.gameObject.SetActive(true);
+        cutsceneCamera.gameObject.SetActive(false);
     }
 
     void Update()
@@ -57,15 +61,13 @@ public class CutsceneController : MonoBehaviour
         {
             float progress = moveTimer / moveDownDuration;
             Vector3 targetPosition = initialPosition + Vector3.down * moveDownSpeed;
-            virtualCamera.transform.position = Vector3.Lerp(initialPosition, targetPosition, progress);
+            cutsceneCamera.transform.position = Vector3.Lerp(initialPosition, targetPosition, progress);
             moveTimer += Time.deltaTime;
         }
         else
         {
-            // Transition to zoom out phase
             isMovingDown = false;
             isZoomingOut = true;
-            moveTimer = 0f; // Reset timer for next phase
         }
     }
 
@@ -75,15 +77,13 @@ public class CutsceneController : MonoBehaviour
         {
             float progress = zoomTimer / zoomOutDuration;
             float targetZoom = initialZoom + zoomOutSpeed;
-            virtualCamera.m_Lens.FieldOfView = Mathf.Lerp(initialZoom, targetZoom, progress);
+            cutsceneCamera.m_Lens.FieldOfView = Mathf.Lerp(initialZoom, targetZoom, progress);
             zoomTimer += Time.deltaTime;
         }
         else
         {
-            // Transition to pause phase
             isZoomingOut = false;
             isPausing = true;
-            zoomTimer = 0f; // Reset timer for the next phase
         }
     }
 
@@ -95,9 +95,33 @@ public class CutsceneController : MonoBehaviour
         }
         else
         {
-            // End of cutscene - Optionally trigger other events here
-            Debug.Log("Cutscene Complete");
-            enabled = false; // Disable the script to end the cutscene
+            EndCutscene();
+        }
+    }
+
+    public void StartCutscene()
+    {
+        // Switch to the cutscene camera
+        mainCamera.gameObject.SetActive(false);
+        cutsceneCamera.gameObject.SetActive(true);
+    }
+
+    private void EndCutscene()
+    {
+        // Switch back to the main camera after the cutscene
+        cutsceneCamera.gameObject.SetActive(false);
+        mainCamera.gameObject.SetActive(true);
+
+        // Optionally, disable this script after the cutscene ends
+        enabled = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Trigger Hit Player");
+        if (other.CompareTag("Player"))
+        {
+            StartCutscene(); // Start the cutscene when the player enters the trigger
         }
     }
 }
