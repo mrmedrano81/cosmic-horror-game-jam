@@ -42,7 +42,7 @@ public class ChaseState : AIStateMachine
             if(distancetoPlayer <= 20f)
             {
                 ai.ChaseAttackStepsAudio();
-                Debug.Log("Playing Chase Audio");
+                //Debug.Log("Playing Chase Audio");
             }
 
             if (distancetoPlayer > ai.minDistancetoPlayer)
@@ -68,7 +68,7 @@ public class ChaseState : AIStateMachine
      
         if (!ai.Agent.pathPending && ai.Agent.remainingDistance <= ai.waypointTolerance)
         {
-            Debug.Log("Player not found near waypoint, going to Search");
+            //Debug.Log("Player not found near waypoint, going to Search");
             Vector3 lastknowposition = ai.Agent.destination;
             ai.SwitchState(new SearchState(lastknowposition));
         }

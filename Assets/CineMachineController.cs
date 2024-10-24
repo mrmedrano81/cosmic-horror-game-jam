@@ -1,47 +1,73 @@
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.SceneManagement;
+using TMPro;
+using UnityEngine.UI;
 
-public class CutsceneController : MonoBehaviour
+public class CutsceneManager : MonoBehaviour
 {
-    [Header("Cameras")]
-    public Camera mainCamera; // Assign the default Unity Main Camera
-    public CinemachineVirtualCamera cutsceneCamera; // Assign your cutscene Cinemachine camera
+    [Header("Scene Settings")]
+    public string returnSceneName = "MainScene"; // Scene to return to after cutscene
 
-    [Header("Move Down Settings")]
-    public float moveDownSpeed = 5f;
-    public float moveDownDuration = 3f;
+    [Header("Cutscene Cameras")]
+    public CinemachineVirtualCamera elevatorCamera; // Cinemachine camera in the elevator
 
-    [Header("Zoom Out Settings")]
-    public float zoomOutSpeed = 10f;
-    public float zoomOutDuration = 2f;
+    [Header("Stage Durations")]
+    public float shakeDuration = 3f;  // How long the camera shakes in the elevator
+    public float moveDownDuration = 4f;  // Duration for moving down
+    public float zoomOutDuration = 3f;  // Duration for zoom out
+    public float pauseDuration = 2f;  // Pause time at the end
 
-    [Header("Pause Settings")]
-    public float pauseDuration = 2f;
+    [Header("Movement Settings")]
+    public float moveDownDistance = 10f;  // Distance the camera moves down
+    public float zoomOutDistance = 5f;  // Distance the camera moves back during zoom out
+    public float moveDownSpeed = 2f;  // Speed of moving down
+    public float zoomOutSpeed = 2f;  // Speed of zooming out
 
-    private float moveTimer = 0f;
-    private float zoomTimer = 0f;
-    private float pauseTimer = 0f;
+    [Header("Shaky Camera Settings")]
+    public float shakeIntensity = 0.2f;  // Intensity of the camera shake
 
-    private bool isMovingDown = true;
+    [Header("Fade to Black Panel Settigns")]
+    public GameObject fadePanel;
+    public TextMeshProUGUI fadeText;
+    public float fadeDuration = 2f;
+    public Button returnButton;
+
+    private Vector3 initialPosition;  // Initial camera position
+    private float timer = 0f;  // Time tracker
+    private bool isShaking = true;
+    private bool isMovingDown = false;
     private bool isZoomingOut = false;
-    private bool isPausing = false;
-
-    private Vector3 initialPosition;
-    private float initialZoom;
-
+    private bool isPaused = false;
+    private bool isFadingIn = false;
+    private bool nextscene = false;
     void Start()
     {
-        initialPosition = cutsceneCamera.transform.position;
-        initialZoom = cutsceneCamera.m_Lens.FieldOfView;
+        // Store the initial position of the camera
+        initialPosition = elevatorCamera.transform.localPosition;
 
-        // Ensure the main camera starts active and cutscene camera is inactive
-        mainCamera.gameObject.SetActive(true);
-        cutsceneCamera.gameObject.SetActive(false);
+        // Start with the shaky camera effect
+        isShaking = true;
+
+
+        if (fadePanel)
+        {
+            fadePanel.SetActive(false);
+        }
+
+        else
+        {
+            Debug.LogError("Fade Panel Not Assigned");
+        }
     }
 
     void Update()
     {
-        if (isMovingDown)
+        if (isShaking)
+        {
+            ShakeCamera();
+        }
+        else if (isMovingDown)
         {
             MoveDown();
         }
@@ -49,23 +75,53 @@ public class CutsceneController : MonoBehaviour
         {
             ZoomOut();
         }
-        else if (isPausing)
+        else if (isPaused)
         {
-            PauseInPlace();
+            PauseAtEnd();
+        }
+
+        if (isFadingIn)
+        {
+            FadeIn();
+        }
+    }
+
+    private void ShakeCamera()
+    {
+        timer += Time.deltaTime;
+        float progress = Mathf.Clamp01(timer / shakeDuration);
+
+        // Apply random shaking to the camera's position
+        Vector3 shakeOffset = new Vector3(
+            Random.Range(-shakeIntensity, shakeIntensity),
+            Random.Range(-shakeIntensity, shakeIntensity),
+            Random.Range(-shakeIntensity, shakeIntensity)
+        );
+        elevatorCamera.transform.localPosition = initialPosition + shakeOffset;
+
+        if (progress >= 1f)
+        {
+            // Stop shaking and start moving down
+            timer = 0f;
+            elevatorCamera.transform.localPosition = initialPosition;  // Reset position
+            isShaking = false;
+            isMovingDown = true;
         }
     }
 
     private void MoveDown()
     {
-        if (moveTimer < moveDownDuration)
+        timer += Time.deltaTime * moveDownSpeed; // Scale timer with speed
+        float progress = Mathf.Clamp01(timer / moveDownDuration);
+
+        // Smoothly move the camera down
+        Vector3 targetPosition = initialPosition + Vector3.down * moveDownDistance;
+        elevatorCamera.transform.localPosition = Vector3.Lerp(initialPosition, targetPosition, progress);
+
+        if (progress >= 1f)
         {
-            float progress = moveTimer / moveDownDuration;
-            Vector3 targetPosition = initialPosition + Vector3.down * moveDownSpeed;
-            cutsceneCamera.transform.position = Vector3.Lerp(initialPosition, targetPosition, progress);
-            moveTimer += Time.deltaTime;
-        }
-        else
-        {
+            // Stop moving down and start zooming out
+            timer = 0f;
             isMovingDown = false;
             isZoomingOut = true;
         }
@@ -73,55 +129,75 @@ public class CutsceneController : MonoBehaviour
 
     private void ZoomOut()
     {
-        if (zoomTimer < zoomOutDuration)
+        timer += Time.deltaTime * zoomOutSpeed; // Scale timer with speed
+        float progress = Mathf.Clamp01(timer / zoomOutDuration);
+
+        // Smoothly pull back the camera by adjusting its position
+        Vector3 targetPosition = elevatorCamera.transform.localPosition - Vector3.back * zoomOutDistance;
+        elevatorCamera.transform.localPosition = Vector3.Lerp(initialPosition + Vector3.down * moveDownDistance, targetPosition, progress);
+
+        if (progress >= 1f)
         {
-            float progress = zoomTimer / zoomOutDuration;
-            float targetZoom = initialZoom + zoomOutSpeed;
-            cutsceneCamera.m_Lens.FieldOfView = Mathf.Lerp(initialZoom, targetZoom, progress);
-            zoomTimer += Time.deltaTime;
-        }
-        else
-        {
+            // Stop zooming out and start the pause
+            timer = 0f;
             isZoomingOut = false;
-            isPausing = true;
+            isPaused = true;
         }
     }
 
-    private void PauseInPlace()
+    private void PauseAtEnd()
     {
-        if (pauseTimer < pauseDuration)
+        timer += Time.deltaTime;
+
+        if (timer >= pauseDuration)
         {
-            pauseTimer += Time.deltaTime;
+            StartFadeIn();
+            timer = 0f;
+            timer += Time.deltaTime;
+            if(timer >= pauseDuration)
+            {
+                Debug.Log("Switch Scenes");
+            }
         }
-        else
+    }
+
+    private void StartFadeIn()
+    {
+        fadePanel.SetActive(true);
+        isFadingIn = true;
+    }
+
+    private void FadeIn()
+    {
+        //Debug.Log("FadeIn plays");
+        Image panelImage = fadePanel.GetComponent<Image>();
+        if (panelImage)
         {
-            EndCutscene();
+            Color color = panelImage.color;
+            color.a += Time.deltaTime / fadeDuration;
+            //Debug.Log("Panel Alpha: " + color.a);
+            panelImage.color = color;
+
+            if (color.a >= 1f)
+            {
+                //Debug.Log("Full Stop");
+                color.a = 1f;
+                panelImage.color = color;
+                isFadingIn = false;
+
+                returnButton.gameObject.SetActive(true);
+                fadeText.text = "Thank You For Playing";
+                 
+            }
         }
-    }
-
-    public void StartCutscene()
-    {
-        // Switch to the cutscene camera
-        mainCamera.gameObject.SetActive(false);
-        cutsceneCamera.gameObject.SetActive(true);
-    }
-
-    private void EndCutscene()
-    {
-        // Switch back to the main camera after the cutscene
-        cutsceneCamera.gameObject.SetActive(false);
-        mainCamera.gameObject.SetActive(true);
-
-        // Optionally, disable this script after the cutscene ends
-        enabled = false;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("Trigger Hit Player");
-        if (other.CompareTag("Player"))
+        if (panelImage == null)
         {
-            StartCutscene(); // Start the cutscene when the player enters the trigger
+            Debug.Log("Not Referenced");
         }
+    }
+
+    public void loadscene()
+    {
+        SceneManager.LoadScene(0);
     }
 }

@@ -44,7 +44,7 @@ public class AttackState : AIStateMachine
             if (distancetoPlayer <= 20f)
             {
                 ai.ChaseAttackStepsAudio();
-                Debug.Log("Playing Attack Audio");
+                //Debug.Log("Playing Attack Audio");
             }
 
             if (distancetoPlayer > ai.minDistancetoAttackPlayer)
@@ -57,7 +57,7 @@ public class AttackState : AIStateMachine
                 {
                     
                    // ai.spiderAnim.Play("Armature|SpiderRun_Anim");
-                    Debug.Log("Attacking Player");
+                    //Debug.Log("Attacking Player");
                     ai.LungeAttack();
                     //ai.Agent.speed = 1f;
                     //pausetimer += Time.deltaTime;
@@ -65,7 +65,7 @@ public class AttackState : AIStateMachine
                     pausetimer = 0f;
                     //ai.Agent.speed = ai.attackMovementSpeed;
                     //ai.Agent.SetDestination(player.position);
-                    Debug.Log("Lunging");
+                    //Debug.Log("Lunging");
                     
                 }
             }
