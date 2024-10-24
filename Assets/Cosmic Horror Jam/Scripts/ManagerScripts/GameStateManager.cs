@@ -111,10 +111,10 @@ public class GameStateManager : MonoBehaviour
 
     public void GameOver()
     {
-        isPaused = true;
-        gameOverPanel.SetActive(true);
-        Time.timeScale = 0f;
-        ReloadGame();
+        //isPaused = true;
+        //gameOverPanel.SetActive(true);
+        //Time.timeScale = 0f;
+        //ReloadGame();
     }
 
     public void ReloadGame()
